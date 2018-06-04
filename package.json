@@ -1,0 +1,27 @@
+{
+  "name": "joypad",
+  "version": "1.0.0",
+  "description": "A JavaScript library that lets you connect various gaming controllers to your browser using the Gamepad API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArunMichaelDsouza/joypad.js.git"
+  },
+  "keywords": [
+    "gaming",
+    "api",
+    "joypad",
+    "js api",
+    "gamepad",
+    "html5 api"
+  ],
+  "author": "Arun Michael Dsouza <amdsouza92@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ArunMichaelDsouza/joypad.js/issues"
+  },
+  "homepage": "https://github.com/ArunMichaelDsouza/joypad.js#readme"
+}
