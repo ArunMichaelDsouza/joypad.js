@@ -23,5 +23,9 @@
   "bugs": {
     "url": "https://github.com/ArunMichaelDsouza/joypad.js/issues"
   },
-  "homepage": "https://github.com/ArunMichaelDsouza/joypad.js#readme"
+  "homepage": "https://github.com/ArunMichaelDsouza/joypad.js#readme",
+  "devDependencies": {
+    "webpack": "^4.10.2",
+    "webpack-command": "^0.2.0"
+  }
 }
