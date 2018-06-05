@@ -6,6 +6,7 @@ import emmitter from './emitter';
 import { EVENTS } from './constants';
 
 ; (function () {
+    window.Joypad = Joypad;
     function main() {
         window.requestAnimationFrame(main);
         if (window.navigator.getGamepads()[0]) {
@@ -15,8 +16,5 @@ import { EVENTS } from './constants';
             }
         }
     }
-
     main();
 })();
-
-window.Joypad = Joypad;

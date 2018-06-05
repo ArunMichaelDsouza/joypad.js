@@ -3,8 +3,8 @@
 import emmitter from './emitter';
 import { EVENTS } from './constants';
 
-class Joypad {
-    on(event, cb) {
+var Joypad = function () {
+    this.on = function (event, cb) {
         switch (event) {
             case EVENTS.NATIVE.CONNECT:
                 emmitter.subscribe(EVENTS.OTHER.CONNECT, cb);
@@ -17,6 +17,6 @@ class Joypad {
                 break;
         }
     }
-}
+};
 
 export default Joypad;
