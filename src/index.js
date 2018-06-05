@@ -1,16 +1,9 @@
 import emmitter from './emitter';
+import './events';
 
 ; (function (w) {
     if (w.navigator.getGamepads) {
         console.log(w.navigator.getGamepads());
-
-        w.addEventListener('gamepadconnected', function (e) {
-            emmitter.publish('gamepadconnected', e);
-        });
-
-        w.addEventListener('gamepaddisconnected', function (e) {
-            emmitter.publish('gamepaddisconnected', e);
-        });
 
         function Joypad() {
             this.joypads = [];

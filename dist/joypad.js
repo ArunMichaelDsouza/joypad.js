@@ -86,14 +86,39 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/constants.js":
+/*!**************************!*\
+  !*** ./src/constants.js ***!
+  \**************************/
+/*! exports provided: EVENTS */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"EVENTS\", function() { return EVENTS; });\n// Global constants \n\nvar EVENTS = {\n    GAMEPAD_CONNECT: 'gamepadconnected',\n    GAMEPAD_DISCONNECT: 'gamepaddisconnected'\n};\n\n\n\n//# sourceURL=webpack:///./src/constants.js?");
+
+/***/ }),
+
 /***/ "./src/emitter.js":
 /*!************************!*\
   !*** ./src/emitter.js ***!
   \************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("var emmitter = {\n    events: {},\n    publish: function (event, data) {\n        if (this.events.hasOwnProperty(event)) {\n            this.events[event].forEach(function (listener) {\n                listener(data);\n            });\n        }\n    },\n    subscribe: function (event, listener) {\n        if (!this.events.hasOwnProperty(event)) {\n            this.events[event] = [];\n        }\n        this.events[event].push(listener);\n\n        return {\n            unsubscribe: function () {\n                this.events[event].splice(this.events[event].indexOf(listener), 1);\n            }.bind(this)\n        };\n    }\n};\n\nmodule.exports = emmitter\n\n//# sourceURL=webpack:///./src/emitter.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// Pub-sub module\n\nvar emmitter = {\n    events: {},\n    publish: function (event, data) {\n        if (this.events.hasOwnProperty(event)) {\n            this.events[event].forEach(function (listener) {\n                listener(data);\n            });\n        }\n    },\n    subscribe: function (event, listener) {\n        if (!this.events.hasOwnProperty(event)) {\n            this.events[event] = [];\n        }\n        this.events[event].push(listener);\n\n        return {\n            unsubscribe: function () {\n                this.events[event].splice(this.events[event].indexOf(listener), 1);\n            }.bind(this)\n        };\n    }\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (emmitter);\n\n//# sourceURL=webpack:///./src/emitter.js?");
+
+/***/ }),
+
+/***/ "./src/events.js":
+/*!***********************!*\
+  !*** ./src/events.js ***!
+  \***********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _emitter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./emitter */ \"./src/emitter.js\");\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants */ \"./src/constants.js\");\n// Joypad events\n\n\n\n\nwindow.addEventListener(_constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].GAMEPAD_CONNECT, function (e) {\n    _emitter__WEBPACK_IMPORTED_MODULE_0__[\"default\"].publish(_constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].GAMEPAD_CONNECT, e);\n});\n\nwindow.addEventListener(_constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].GAMEPAD_DISCONNECT, function (e) {\n    _emitter__WEBPACK_IMPORTED_MODULE_0__[\"default\"].publish(_constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].GAMEPAD_DISCONNECT, e);\n});\n\n//# sourceURL=webpack:///./src/events.js?");
 
 /***/ }),
 
@@ -105,7 +130,7 @@ eval("var emmitter = {\n    events: {},\n    publish: function (event, data) {\n
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _emitter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./emitter */ \"./src/emitter.js\");\n/* harmony import */ var _emitter__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_emitter__WEBPACK_IMPORTED_MODULE_0__);\n\n\n; (function (w) {\n    if (w.navigator.getGamepads) {\n        console.log(w.navigator.getGamepads());\n\n        w.addEventListener('gamepadconnected', function (e) {\n            _emitter__WEBPACK_IMPORTED_MODULE_0___default.a.publish('gamepadconnected', e);\n        });\n\n        w.addEventListener('gamepaddisconnected', function (e) {\n            _emitter__WEBPACK_IMPORTED_MODULE_0___default.a.publish('gamepaddisconnected', e);\n        });\n\n        function Joypad() {\n            this.joypads = [];\n        }\n\n        Joypad.prototype.on = function (event, cb) {\n            switch (event) {\n                case 'connect':\n                    _emitter__WEBPACK_IMPORTED_MODULE_0___default.a.subscribe('gamepadconnected', cb);\n                    break;\n                case 'disconnect':\n                    _emitter__WEBPACK_IMPORTED_MODULE_0___default.a.subscribe('gamepaddisconnected', cb);\n                    break;\n                case 'gamepadpress':\n                    _emitter__WEBPACK_IMPORTED_MODULE_0___default.a.subscribe('gamepadpress', cb);\n                    break;\n            }\n        };\n\n        window.main = function () {\n            window.requestAnimationFrame(main);\n            var pressed = window.navigator.getGamepads()[0].buttons[0].pressed;\n            if (pressed) {\n                _emitter__WEBPACK_IMPORTED_MODULE_0___default.a.publish('gamepadpress', pressed);\n            }\n        };\n\n        main();\n\n        var joypad = new Joypad();\n\n        joypad.on('connect', function (e) {\n            console.log(e.gamepad);\n            window.g = e.gamepad;\n        });\n        joypad.on('disconnect', function (e) {\n            console.log(e);\n        });\n        joypad.on('gamepadpress', function (e) {\n            console.log(e);\n        });\n    }\n})(window);\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _emitter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./emitter */ \"./src/emitter.js\");\n/* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./events */ \"./src/events.js\");\n\n\n\n; (function (w) {\n    if (w.navigator.getGamepads) {\n        console.log(w.navigator.getGamepads());\n\n        function Joypad() {\n            this.joypads = [];\n        }\n\n        Joypad.prototype.on = function (event, cb) {\n            switch (event) {\n                case 'connect':\n                    _emitter__WEBPACK_IMPORTED_MODULE_0__[\"default\"].subscribe('gamepadconnected', cb);\n                    break;\n                case 'disconnect':\n                    _emitter__WEBPACK_IMPORTED_MODULE_0__[\"default\"].subscribe('gamepaddisconnected', cb);\n                    break;\n                case 'gamepadpress':\n                    _emitter__WEBPACK_IMPORTED_MODULE_0__[\"default\"].subscribe('gamepadpress', cb);\n                    break;\n            }\n        };\n\n        window.main = function () {\n            window.requestAnimationFrame(main);\n            var pressed = window.navigator.getGamepads()[0].buttons[0].pressed;\n            if (pressed) {\n                _emitter__WEBPACK_IMPORTED_MODULE_0__[\"default\"].publish('gamepadpress', pressed);\n            }\n        };\n\n        main();\n\n        var joypad = new Joypad();\n\n        joypad.on('connect', function (e) {\n            console.log(e.gamepad);\n            window.g = e.gamepad;\n        });\n        joypad.on('disconnect', function (e) {\n            console.log(e);\n        });\n        joypad.on('gamepadpress', function (e) {\n            console.log(e);\n        });\n    }\n})(window);\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 

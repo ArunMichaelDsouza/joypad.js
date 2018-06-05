@@ -1,3 +1,5 @@
+// Pub-sub module
+
 var emmitter = {
     events: {},
     publish: function (event, data) {
@@ -21,4 +23,4 @@ var emmitter = {
     }
 };
 
-module.exports = emmitter
+export default emmitter;
