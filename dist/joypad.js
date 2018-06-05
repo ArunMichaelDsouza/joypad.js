@@ -86,6 +86,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/Joypad.js":
+/*!***********************!*\
+  !*** ./src/Joypad.js ***!
+  \***********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _emitter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./emitter */ \"./src/emitter.js\");\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants */ \"./src/constants.js\");\n// Joypad class\n\n\n\n\nclass Joypad {\n    on(event, cb) {\n        switch (event) {\n            case _constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].NATIVE.CONNECT:\n                _emitter__WEBPACK_IMPORTED_MODULE_0__[\"default\"].subscribe(_constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].OTHER.CONNECT, cb);\n                break;\n            case _constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].NATIVE.DISCONNECT:\n                _emitter__WEBPACK_IMPORTED_MODULE_0__[\"default\"].subscribe(_constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].OTHER.DISCONNECT, cb);\n                break;\n            case _constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].OTHER.BUTTON_PRESS:\n                _emitter__WEBPACK_IMPORTED_MODULE_0__[\"default\"].subscribe(_constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].OTHER.BUTTON_PRESS, cb);\n                break;\n        }\n    }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Joypad);\n\n//# sourceURL=webpack:///./src/Joypad.js?");
+
+/***/ }),
+
 /***/ "./src/constants.js":
 /*!**************************!*\
   !*** ./src/constants.js ***!
@@ -130,7 +142,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _emi
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _emitter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./emitter */ \"./src/emitter.js\");\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants */ \"./src/constants.js\");\n/* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./events */ \"./src/events.js\");\n\n\n\n\nclass Joypad {\n    constructor() {\n        this.main = this.main.bind(this);\n        this.main();\n    }\n\n    main() {\n        window.requestAnimationFrame(this.main);\n        if (window.navigator.getGamepads()[0]) {\n            var pressed = window.navigator.getGamepads()[0].buttons[0].pressed;\n            if (pressed) {\n                _emitter__WEBPACK_IMPORTED_MODULE_0__[\"default\"].publish(_constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].OTHER.BUTTON_PRESS, pressed);\n            }\n        }\n    }\n\n    on(event, cb) {\n        switch (event) {\n            case _constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].NATIVE.CONNECT:\n                _emitter__WEBPACK_IMPORTED_MODULE_0__[\"default\"].subscribe(_constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].OTHER.CONNECT, cb);\n                break;\n            case _constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].NATIVE.DISCONNECT:\n                _emitter__WEBPACK_IMPORTED_MODULE_0__[\"default\"].subscribe(_constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].OTHER.DISCONNECT, cb);\n                break;\n            case _constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].OTHER.BUTTON_PRESS:\n                _emitter__WEBPACK_IMPORTED_MODULE_0__[\"default\"].subscribe(_constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].OTHER.BUTTON_PRESS, cb);\n                break;\n        }\n    }\n\n    destroy() {\n\n    }\n}\n\nwindow.Joypad = Joypad;\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./events */ \"./src/events.js\");\n/* harmony import */ var _Joypad__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Joypad */ \"./src/Joypad.js\");\n/* harmony import */ var _emitter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./emitter */ \"./src/emitter.js\");\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./constants */ \"./src/constants.js\");\n// Entry point\n\n\n\n\n\n\n; (function () {\n    function main() {\n        window.requestAnimationFrame(main);\n        if (window.navigator.getGamepads()[0]) {\n            var pressed = window.navigator.getGamepads()[0].buttons[0].pressed;\n            if (pressed) {\n                _emitter__WEBPACK_IMPORTED_MODULE_2__[\"default\"].publish(_constants__WEBPACK_IMPORTED_MODULE_3__[\"EVENTS\"].OTHER.BUTTON_PRESS, pressed);\n            }\n        }\n    }\n\n    main();\n})();\n\nwindow.Joypad = _Joypad__WEBPACK_IMPORTED_MODULE_1__[\"default\"];\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
