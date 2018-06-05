@@ -1,49 +1,40 @@
 import emmitter from './emitter';
+import { EVENTS } from './constants';
 import './events';
 
-; (function (w) {
-    if (w.navigator.getGamepads) {
-        console.log(w.navigator.getGamepads());
+class Joypad {
+    constructor() {
+        this.main = this.main.bind(this);
+        this.main();
+    }
 
-        function Joypad() {
-            this.joypads = [];
-        }
-
-        Joypad.prototype.on = function (event, cb) {
-            switch (event) {
-                case 'connect':
-                    emmitter.subscribe('gamepadconnected', cb);
-                    break;
-                case 'disconnect':
-                    emmitter.subscribe('gamepaddisconnected', cb);
-                    break;
-                case 'gamepadpress':
-                    emmitter.subscribe('gamepadpress', cb);
-                    break;
-            }
-        };
-
-        window.main = function () {
-            window.requestAnimationFrame(main);
+    main() {
+        window.requestAnimationFrame(this.main);
+        if (window.navigator.getGamepads()[0]) {
             var pressed = window.navigator.getGamepads()[0].buttons[0].pressed;
             if (pressed) {
-                emmitter.publish('gamepadpress', pressed);
+                emmitter.publish(EVENTS.OTHER.BUTTON_PRESS, pressed);
             }
-        };
-
-        main();
-
-        var joypad = new Joypad();
-
-        joypad.on('connect', function (e) {
-            console.log(e.gamepad);
-            window.g = e.gamepad;
-        });
-        joypad.on('disconnect', function (e) {
-            console.log(e);
-        });
-        joypad.on('gamepadpress', function (e) {
-            console.log(e);
-        });
+        }
     }
-})(window);
+
+    on(event, cb) {
+        switch (event) {
+            case EVENTS.NATIVE.CONNECT:
+                emmitter.subscribe(EVENTS.OTHER.CONNECT, cb);
+                break;
+            case EVENTS.NATIVE.DISCONNECT:
+                emmitter.subscribe(EVENTS.OTHER.DISCONNECT, cb);
+                break;
+            case EVENTS.OTHER.BUTTON_PRESS:
+                emmitter.subscribe(EVENTS.OTHER.BUTTON_PRESS, cb);
+                break;
+        }
+    }
+
+    destroy() {
+
+    }
+}
+
+window.Joypad = Joypad;
