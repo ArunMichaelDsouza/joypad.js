@@ -1,10 +1,6 @@
 // Entry point
 
 import './events';
-import loop from './loop';
-import Joypad from './Joypad';
-import emmitter from './emitter';
-import { EVENTS } from './constants';
+import joypad from './joypad';
 
-window.Joypad = Joypad;
-loop.start();
+window.joypad = joypad;

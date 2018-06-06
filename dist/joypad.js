@@ -86,18 +86,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/Joypad.js":
-/*!***********************!*\
-  !*** ./src/Joypad.js ***!
-  \***********************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _emitter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./emitter */ \"./src/emitter.js\");\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants */ \"./src/constants.js\");\n/* harmony import */ var _loop__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./loop */ \"./src/loop.js\");\n// Joypad class\n\n\n\n\n\nvar Joypad = function () {\n    this.on = function (event, cb) {\n        switch (event) {\n            case _constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].NATIVE.CONNECT:\n                _emitter__WEBPACK_IMPORTED_MODULE_0__[\"default\"].subscribe(_constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].OTHER.CONNECT, cb);\n                break;\n            case _constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].NATIVE.DISCONNECT:\n                _emitter__WEBPACK_IMPORTED_MODULE_0__[\"default\"].subscribe(_constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].OTHER.DISCONNECT, cb);\n                break;\n            case _constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].OTHER.BUTTON_PRESS:\n                _emitter__WEBPACK_IMPORTED_MODULE_0__[\"default\"].subscribe(_constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].OTHER.BUTTON_PRESS, cb);\n                break;\n        }\n    };\n    this.stopLoop = function () {\n        _loop__WEBPACK_IMPORTED_MODULE_2__[\"default\"].cancel(_loop__WEBPACK_IMPORTED_MODULE_2__[\"default\"].id);\n    };\n    this.resumeLoop = function () {\n        _loop__WEBPACK_IMPORTED_MODULE_2__[\"default\"].start();\n    };\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Joypad);\n\n//# sourceURL=webpack:///./src/Joypad.js?");
-
-/***/ }),
-
 /***/ "./src/constants.js":
 /*!**************************!*\
   !*** ./src/constants.js ***!
@@ -142,7 +130,19 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _emi
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./events */ \"./src/events.js\");\n/* harmony import */ var _loop__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./loop */ \"./src/loop.js\");\n/* harmony import */ var _Joypad__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Joypad */ \"./src/Joypad.js\");\n/* harmony import */ var _emitter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./emitter */ \"./src/emitter.js\");\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./constants */ \"./src/constants.js\");\n// Entry point\n\n\n\n\n\n\n\nwindow.Joypad = _Joypad__WEBPACK_IMPORTED_MODULE_2__[\"default\"];\n_loop__WEBPACK_IMPORTED_MODULE_1__[\"default\"].start();\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./events */ \"./src/events.js\");\n/* harmony import */ var _joypad__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./joypad */ \"./src/joypad.js\");\n// Entry point\n\n\n\n\nwindow.joypad = _joypad__WEBPACK_IMPORTED_MODULE_1__[\"default\"];\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/joypad.js":
+/*!***********************!*\
+  !*** ./src/joypad.js ***!
+  \***********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _emitter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./emitter */ \"./src/emitter.js\");\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants */ \"./src/constants.js\");\n/* harmony import */ var _loop__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./loop */ \"./src/loop.js\");\n// Joypad instance\n\n\n\n\n\nvar joypad = {\n    on: function (event, cb) {\n        switch (event) {\n            case _constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].NATIVE.CONNECT:\n                _emitter__WEBPACK_IMPORTED_MODULE_0__[\"default\"].subscribe(_constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].OTHER.CONNECT, cb);\n                break;\n            case _constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].NATIVE.DISCONNECT:\n                _emitter__WEBPACK_IMPORTED_MODULE_0__[\"default\"].subscribe(_constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].OTHER.DISCONNECT, cb);\n                break;\n            case _constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].OTHER.BUTTON_PRESS:\n                _emitter__WEBPACK_IMPORTED_MODULE_0__[\"default\"].subscribe(_constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].OTHER.BUTTON_PRESS, cb);\n                break;\n        }\n    },\n    stop: function () {\n        _loop__WEBPACK_IMPORTED_MODULE_2__[\"default\"].cancel(_loop__WEBPACK_IMPORTED_MODULE_2__[\"default\"].id);\n    },\n    start: function () {\n        _loop__WEBPACK_IMPORTED_MODULE_2__[\"default\"].start();\n    }.call()\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (joypad);\n\n//# sourceURL=webpack:///./src/joypad.js?");
 
 /***/ }),
 
@@ -154,7 +154,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _eve
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _emitter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./emitter */ \"./src/emitter.js\");\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants */ \"./src/constants.js\");\n// Main loop\n\n\n\n\nvar loop = {\n    id: null,\n    start: function () {\n        var that = this;\n\n        function main() {\n            that.id = window.requestAnimationFrame(main);\n            if (window.navigator.getGamepads()[0]) {\n                var pressed = window.navigator.getGamepads()[0].buttons[0].pressed;\n                if (pressed) {\n                    _emitter__WEBPACK_IMPORTED_MODULE_0__[\"default\"].publish(_constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].OTHER.BUTTON_PRESS, pressed);\n                }\n            }\n        }\n        main();\n    },\n    cancel: function (id) {\n        window.cancelAnimationFrame(id);\n    }\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (loop);\n\n//# sourceURL=webpack:///./src/loop.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _emitter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./emitter */ \"./src/emitter.js\");\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants */ \"./src/constants.js\");\n// Main loop\n\n\n\n\nvar loop = {\n    id: null,\n    start: function () {\n        this.id = window.requestAnimationFrame(this.start.bind(this));\n        if (window.navigator.getGamepads()[0]) {\n            var pressed = window.navigator.getGamepads()[0].buttons[0].pressed;\n            if (pressed) {\n                _emitter__WEBPACK_IMPORTED_MODULE_0__[\"default\"].publish(_constants__WEBPACK_IMPORTED_MODULE_1__[\"EVENTS\"].OTHER.BUTTON_PRESS, pressed);\n            }\n        }\n    },\n    cancel: function (id) {\n        window.cancelAnimationFrame(id);\n    }\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (loop);\n\n//# sourceURL=webpack:///./src/loop.js?");
 
 /***/ })
 

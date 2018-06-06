@@ -1,11 +1,11 @@
-// Joypad class
+// Joypad instance
 
 import emmitter from './emitter';
 import { EVENTS } from './constants';
 import loop from './loop';
 
-var Joypad = function () {
-    this.on = function (event, cb) {
+var joypad = {
+    on: function (event, cb) {
         switch (event) {
             case EVENTS.NATIVE.CONNECT:
                 emmitter.subscribe(EVENTS.OTHER.CONNECT, cb);
@@ -17,13 +17,13 @@ var Joypad = function () {
                 emmitter.subscribe(EVENTS.OTHER.BUTTON_PRESS, cb);
                 break;
         }
-    };
-    this.stopLoop = function () {
+    },
+    stop: function () {
         loop.cancel(loop.id);
-    };
-    this.resumeLoop = function () {
+    },
+    start: function () {
         loop.start();
-    };
+    }.call()
 };
 
-export default Joypad;
+export default joypad;
