@@ -4,17 +4,17 @@ import emmitter from './emitter';
 import { EVENTS } from './constants';
 import loop from './loop';
 
-var joypad = {
-    on: function (event, cb) {
+const joypad = {
+    on: function (event, callback) {
         switch (event) {
             case EVENTS.NATIVE.CONNECT:
-                emmitter.subscribe(EVENTS.OTHER.CONNECT, cb);
+                emmitter.subscribe(EVENTS.OTHER.CONNECT, callback);
                 break;
             case EVENTS.NATIVE.DISCONNECT:
-                emmitter.subscribe(EVENTS.OTHER.DISCONNECT, cb);
+                emmitter.subscribe(EVENTS.OTHER.DISCONNECT, callback);
                 break;
             case EVENTS.OTHER.BUTTON_PRESS:
-                emmitter.subscribe(EVENTS.OTHER.BUTTON_PRESS, cb);
+                emmitter.subscribe(EVENTS.OTHER.BUTTON_PRESS, callback);
                 break;
         }
     },

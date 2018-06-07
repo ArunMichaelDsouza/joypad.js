@@ -1,10 +1,10 @@
 // Pub-sub module
 
-var emmitter = {
+const emmitter = {
     events: {},
     publish: function (event, data) {
         if (this.events.hasOwnProperty(event)) {
-            this.events[event].forEach(function (listener) {
+            this.events[event].forEach(listener => {
                 listener(data);
             });
         }

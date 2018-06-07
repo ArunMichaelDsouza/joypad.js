@@ -1,6 +1,6 @@
 // Global constants 
 
-var EVENTS = {
+const EVENTS = {
     NATIVE: {
         CONNECT: 'gamepadconnected',
         DISCONNECT: 'gamepaddisconnected'

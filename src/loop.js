@@ -2,7 +2,7 @@
 
 import { listenToButtonEvents } from './events';
 
-var loop = {
+const loop = {
     id: null,
     start: function () {
         this.id = window.requestAnimationFrame(this.start.bind(this));
