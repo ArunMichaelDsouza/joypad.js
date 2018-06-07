@@ -30,10 +30,11 @@ export function listenToButtonEvents() {
                 var gamepad = gamepads[i];
 
                 if (gamepad) {
-                    gamepad.buttons.forEach(function (button) {
+                    gamepad.buttons.forEach(function (button, index) {
                         if (button.pressed) {
                             var eventData = {
                                 button: button,
+                                index: index,
                                 gamepad: gamepad
                             };
 
