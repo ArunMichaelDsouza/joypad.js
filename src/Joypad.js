@@ -19,7 +19,7 @@ const joypad = {
         }
     },
     stop: function () {
-        loop.cancel(loop.id);
+        loop.stop(loop.id);
     },
     start: function () {
         loop.start();

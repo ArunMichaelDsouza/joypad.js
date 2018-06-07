@@ -2,6 +2,7 @@
 
 import emmitter from './emitter';
 import { EVENTS } from './constants';
+import loop from './loop';
 
 window.addEventListener(EVENTS.NATIVE.CONNECT, e => {
     emmitter.publish(EVENTS.OTHER.CONNECT, e);
@@ -17,7 +18,7 @@ window.addEventListener(EVENTS.OTHER.BUTTON_PRESS, e => {
 
 const pressEvent = eventData => new CustomEvent(EVENTS.OTHER.BUTTON_PRESS, { detail: eventData });
 
-export function listenToButtonEvents() {
+export function listenToButtonEvents(id) {
     if ('getGamepads' in window.navigator) {
         const gamepads = window.navigator.getGamepads();
 
@@ -31,6 +32,10 @@ export function listenToButtonEvents() {
                             const eventData = { button, index, gamepad };
 
                             window.dispatchEvent(pressEvent(eventData));
+                            loop.stop(id);
+                            setTimeout(function () {
+                                loop.start();
+                            }, 100);
                         }
                     });
                 }

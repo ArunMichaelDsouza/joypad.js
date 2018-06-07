@@ -6,9 +6,9 @@ const loop = {
     id: null,
     start: function () {
         this.id = window.requestAnimationFrame(this.start.bind(this));
-        listenToButtonEvents();
+        listenToButtonEvents(this.id);
     },
-    cancel: function (id) {
+    stop: function (id) {
         window.cancelAnimationFrame(id);
     }
 };
