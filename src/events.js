@@ -3,40 +3,32 @@
 import emmitter from './emitter';
 import { EVENTS } from './constants';
 
-window.addEventListener(EVENTS.NATIVE.CONNECT, function (e) {
+window.addEventListener(EVENTS.NATIVE.CONNECT, e => {
     emmitter.publish(EVENTS.OTHER.CONNECT, e);
 });
 
-window.addEventListener(EVENTS.NATIVE.DISCONNECT, function (e) {
+window.addEventListener(EVENTS.NATIVE.DISCONNECT, e => {
     emmitter.publish(EVENTS.OTHER.DISCONNECT, e);
 });
 
-window.addEventListener(EVENTS.OTHER.BUTTON_PRESS, function (e) {
+window.addEventListener(EVENTS.OTHER.BUTTON_PRESS, e => {
     emmitter.publish(EVENTS.OTHER.BUTTON_PRESS, e);
 });
 
-var pressEvent = function (eventData) {
-    return new CustomEvent(EVENTS.OTHER.BUTTON_PRESS, {
-        detail: eventData
-    });
-};
+const pressEvent = eventData => new CustomEvent(EVENTS.OTHER.BUTTON_PRESS, { detail: eventData });
 
 export function listenToButtonEvents() {
     if ('getGamepads' in window.navigator) {
-        var gamepads = window.navigator.getGamepads();
+        const gamepads = window.navigator.getGamepads();
 
         if (Object.keys(gamepads).length) {
-            Object.keys(gamepads).forEach(function (i) {
-                var gamepad = gamepads[i];
+            Object.keys(gamepads).forEach(i => {
+                const gamepad = gamepads[i];
 
                 if (gamepad) {
-                    gamepad.buttons.forEach(function (button, index) {
+                    gamepad.buttons.forEach((button, index) => {
                         if (button.pressed) {
-                            var eventData = {
-                                button: button,
-                                index: index,
-                                gamepad: gamepad
-                            };
+                            const eventData = { button, index, gamepad };
 
                             window.dispatchEvent(pressEvent(eventData));
                         }

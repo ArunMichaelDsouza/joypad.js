@@ -11,4 +11,5 @@ window.joypad = joypad;
  Gamepad API
  customevent
  Object.keys
+ ES6
  */
