@@ -1,14 +1,17 @@
 // Global constants 
 
 const EVENTS = {
-    NATIVE: {
-        CONNECT: 'gamepadconnected',
-        DISCONNECT: 'gamepaddisconnected'
+    CONNECT: {
+        NATIVE: 'gamepadconnected',
+        ALIAS: 'connect'
     },
-    OTHER: {
-        CONNECT: 'connect',
-        DISCONNECT: 'disconnect',
-        BUTTON_PRESS: 'press'
+    DISCONNECT: {
+        NATIVE: 'gamepaddisconnected',
+        ALIAS: 'disconnect'
+    },
+    BUTTON_PRESS: {
+        NATIVE: null,
+        ALIAS: 'press'
     }
 };
 

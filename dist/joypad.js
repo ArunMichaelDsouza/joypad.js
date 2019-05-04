@@ -94,7 +94,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"EVENTS\", function() { return EVENTS; });\n// Global constants \n\nconst EVENTS = {\n    NATIVE: {\n        CONNECT: 'gamepadconnected',\n        DISCONNECT: 'gamepaddisconnected'\n    },\n    OTHER: {\n        CONNECT: 'connect',\n        DISCONNECT: 'disconnect',\n        BUTTON_PRESS: 'press'\n    }\n};\n\n\n\n//# sourceURL=webpack:///./src/constants.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"EVENTS\", function() { return EVENTS; });\n// Global constants \n\nconst EVENTS = {\n    CONNECT: {\n        NATIVE: 'gamepadconnected',\n        ALIAS: 'connect'\n    },\n    DISCONNECT: {\n        NATIVE: 'gamepaddisconnected',\n        ALIAS: 'disconnect'\n    },\n    BUTTON_PRESS: {\n        NATIVE: null,\n        ALIAS: 'press'\n    }\n};\n\n\n\n//# sourceURL=webpack:///./src/constants.js?");
 
 /***/ }),
 
