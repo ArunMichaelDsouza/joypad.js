@@ -6,10 +6,13 @@ import loop from './loop';
 
 const joypad = {
     list: {},
-    append: function (gamepadInstance) {
+    add: function (gamepadInstance) {
         const { displayId } = gamepadInstance;
 
         this.list[displayId] = gamepadInstance;
+    },
+    remove: function (displayId) {
+        delete this.list[displayId];
     },
     on: function (event, callback) {
         switch (event) {
