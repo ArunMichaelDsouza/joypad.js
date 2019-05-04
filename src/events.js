@@ -18,6 +18,7 @@ window.addEventListener(EVENTS.OTHER.BUTTON_PRESS, e => {
 
 const pressEvent = eventData => new CustomEvent(EVENTS.OTHER.BUTTON_PRESS, { detail: eventData });
 
+let ind = null;
 export function listenToButtonEvents(id) {
     if ('getGamepads' in window.navigator) {
         const gamepads = window.navigator.getGamepads();
@@ -31,11 +32,17 @@ export function listenToButtonEvents(id) {
                         if (button.pressed) {
                             const eventData = { button, index, gamepad };
 
+                            if (ind === index) {
+                                console.log('hold')
+                            }
+
+                            ind = index;
                             window.dispatchEvent(pressEvent(eventData));
                             loop.stop(id);
                             setTimeout(function () {
                                 loop.start();
-                            }, 100);
+                                ind = null;
+                            }, 220);
                         }
                     });
                 }
