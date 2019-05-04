@@ -15,7 +15,14 @@ window.addEventListener(EVENTS.CONNECT.NATIVE, e => {
 });
 
 window.addEventListener(EVENTS.DISCONNECT.NATIVE, e => {
-    emmitter.publish(EVENTS.DISCONNECT.ALIAS, e);
+    const { gamepad } = e;
+
+    if (gamepad && gamepad instanceof Gamepad) {
+        const { displayId } = gamepad;
+
+        delete joypad.list[displayId];
+        emmitter.publish(EVENTS.DISCONNECT.ALIAS, e);
+    }
 });
 
 // window.addEventListener(EVENTS.OTHER.BUTTON_PRESS, e => {
