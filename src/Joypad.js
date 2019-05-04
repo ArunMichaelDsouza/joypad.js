@@ -7,23 +7,23 @@ import loop from './loop';
 const joypad = {
     on: function (event, callback) {
         switch (event) {
-            case EVENTS.NATIVE.CONNECT:
-                emmitter.subscribe(EVENTS.OTHER.CONNECT, callback);
+            case EVENTS.CONNECT.NATIVE:
+                emmitter.subscribe(EVENTS.CONNECT.ALIAS, callback);
                 break;
-            case EVENTS.NATIVE.DISCONNECT:
-                emmitter.subscribe(EVENTS.OTHER.DISCONNECT, callback);
+            case EVENTS.DISCONNECT.NATIVE:
+                emmitter.subscribe(EVENTS.DISCONNECT.ALIAS, callback);
                 break;
-            case EVENTS.OTHER.BUTTON_PRESS:
-                emmitter.subscribe(EVENTS.OTHER.BUTTON_PRESS, callback);
-                break;
+            // case EVENTS.OTHER.BUTTON_PRESS:
+            //     emmitter.subscribe(EVENTS.OTHER.BUTTON_PRESS, callback);
+            //     break;
         }
     },
-    stop: function () {
-        loop.stop(loop.id);
-    },
-    start: function () {
-        loop.start();
-    }.call()
+    // stop: function () {
+    //     loop.stop(loop.id);
+    // },
+    // start: function () {
+    //     loop.start();
+    // }.call()
 };
 
 export default joypad;
