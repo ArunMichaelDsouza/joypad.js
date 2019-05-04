@@ -5,6 +5,12 @@ import { EVENTS } from './constants';
 import loop from './loop';
 
 const joypad = {
+    list: {},
+    append: function (gamepadInstance) {
+        const { displayId } = gamepadInstance;
+
+        this.list[displayId] = gamepadInstance;
+    },
     on: function (event, callback) {
         switch (event) {
             case EVENTS.CONNECT.NATIVE:

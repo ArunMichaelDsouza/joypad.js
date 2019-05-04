@@ -2,9 +2,11 @@
 
 import emmitter from './emitter';
 import { EVENTS } from './constants';
+import joypad from './joypad';
 import loop from './loop';
 
 window.addEventListener(EVENTS.CONNECT.NATIVE, e => {
+    joypad.append(e.gamepad);
     emmitter.publish(EVENTS.CONNECT.ALIAS, e);
 });
 
