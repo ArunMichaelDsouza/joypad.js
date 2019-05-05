@@ -2,6 +2,7 @@
 
 import emmitter from './emitter';
 import { EVENTS, BUTTON_PRESS_THRESHOLD } from './constants';
+import { log } from './helpers';
 
 const joypad = {
     loopStarted: false,
@@ -10,7 +11,7 @@ const joypad = {
         buttonPressThreshold: BUTTON_PRESS_THRESHOLD
     },
     remove: function (index) {
-        delete this.list[index];
+        return delete this.list[index];
     },
     on: function (event, callback) {
         switch (event) {
@@ -31,7 +32,9 @@ const joypad = {
         if (vibrationActuator && vibrationActuator.type && vibrationActuator.playEffect && typeof vibrationActuator.playEffect === 'function') {
             const { type } = vibrationActuator;
 
-            gamepadInstance.vibrationActuator.playEffect(type, options);
+            return gamepadInstance.vibrationActuator.playEffect(type, options);
+        } else {
+            log('No vibration actuator interface found - https://developer.mozilla.org/en-US/docs/Web/API/GamepadHapticActuator');
         }
     },
     set: function (settings) {
