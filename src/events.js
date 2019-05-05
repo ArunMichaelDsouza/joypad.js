@@ -1,9 +1,10 @@
 // Joypad events
 
 import emmitter from './emitter';
-import { EVENTS } from './constants';
 import joypad from './joypad';
 import loop from './loop';
+import { EVENTS } from './constants';
+import { loopGamepadInstances } from './helpers';
 
 const initEventListeners = () => {
     window.addEventListener(EVENTS.CONNECT.NATIVE, e => {
@@ -21,28 +22,18 @@ const initEventListeners = () => {
     });
 };
 const listenToButtonEvents = id => {
-    const pressEvent = eventData => new CustomEvent(EVENTS.BUTTON_PRESS.ALIAS, { detail: eventData });
+    const buttonPressEvent = eventData => new CustomEvent(EVENTS.BUTTON_PRESS.ALIAS, { detail: eventData });
 
-    if ('getGamepads' in window.navigator) {
-        const gamepads = window.navigator.getGamepads();
+    loopGamepadInstances(gamepad => {
+        gamepad.buttons.forEach((button, index) => {
+            if (button.pressed) {
+                const eventData = { button, index, gamepad };
 
-        if (Object.keys(gamepads).length) {
-            Object.keys(gamepads).forEach(i => {
-                const gamepad = gamepads[i];
-
-                if (gamepad) {
-                    gamepad.buttons.forEach((button, index) => {
-                        if (button.pressed) {
-                            const eventData = { button, index, gamepad };
-
-                            window.dispatchEvent(pressEvent(eventData));
-                            loop.restart(id);
-                        }
-                    });
-                }
-            });
-        }
-    }
+                window.dispatchEvent(buttonPressEvent(eventData));
+                loop.restart(id);
+            }
+        });
+    });
 };
 
 initEventListeners();
