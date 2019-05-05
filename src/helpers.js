@@ -13,5 +13,12 @@ const loopGamepadInstances = callback => {
         });
     }
 };
+const log = message => {
+    if (console.warn && typeof console.warn === 'function') {
+        console.warn(message);
+    } else {
+        console.log(message);
+    }
+};
 
-export { loopGamepadInstances };
+export { loopGamepadInstances, log };

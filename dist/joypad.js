@@ -126,11 +126,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!************************!*\
   !*** ./src/helpers.js ***!
   \************************/
-/*! exports provided: loopGamepadInstances */
+/*! exports provided: loopGamepadInstances, log */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"loopGamepadInstances\", function() { return loopGamepadInstances; });\n// Helper functions\n\nconst loopGamepadInstances = callback => {\n    const gamepads = window.navigator.getGamepads();\n\n    if (Object.keys(gamepads).length) {\n        Object.keys(gamepads).forEach(index => {\n            const gamepad = gamepads[index];\n\n            if (gamepad) {\n                callback(gamepad, index);\n            }\n        });\n    }\n};\n\n\n\n//# sourceURL=webpack:///./src/helpers.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"loopGamepadInstances\", function() { return loopGamepadInstances; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"log\", function() { return log; });\n// Helper functions\n\nconst loopGamepadInstances = callback => {\n    const gamepads = window.navigator.getGamepads();\n\n    if (Object.keys(gamepads).length) {\n        Object.keys(gamepads).forEach(index => {\n            const gamepad = gamepads[index];\n\n            if (gamepad) {\n                callback(gamepad, index);\n            }\n        });\n    }\n};\nconst log = message => {\n    if (console.warn && typeof console.warn === 'function') {\n        console.warn(message);\n    } else {\n        console.log(message);\n    }\n};\n\n\n\n//# sourceURL=webpack:///./src/helpers.js?");
 
 /***/ }),
 
@@ -142,7 +142,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./events */ \"./src/events.js\");\n/* harmony import */ var _joypad__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./joypad */ \"./src/joypad.js\");\n// Entry point\n\n\n\n\nwindow.joypad = _joypad__WEBPACK_IMPORTED_MODULE_1__[\"default\"];\n\n/*\n uses -\n requestAnimationFrame\n Gamepad API\n customevent\n Object.keys\n ES6\n */\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./events */ \"./src/events.js\");\n/* harmony import */ var _joypad__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./joypad */ \"./src/joypad.js\");\n/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers */ \"./src/helpers.js\");\n// Entry point\n\n\n\n\n\nif (window.navigator.getGamepads && typeof window.navigator.getGamepads === 'function') {\n    window.joypad = _joypad__WEBPACK_IMPORTED_MODULE_1__[\"default\"];\n} else {\n    Object(_helpers__WEBPACK_IMPORTED_MODULE_2__[\"log\"])('Your browser does not support the Gamepad API - https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API');\n}\n\n/*\n uses -\n requestAnimationFrame\n Gamepad API\n customevent\n Object.keys\n ES6\n */\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
