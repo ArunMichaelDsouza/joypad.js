@@ -27,6 +27,15 @@ const joypad = {
             //     break;
         }
     },
+    vibrate: function (gamepadInstance, options) {
+        const { vibrationActuator } = gamepadInstance;
+
+        if (vibrationActuator) {
+            const { type } = vibrationActuator;
+
+            gamepadInstance.vibrationActuator.playEffect(type, options);
+        }
+    },
     // stop: function () {
     //     loop.stop(loop.id);
     // },
