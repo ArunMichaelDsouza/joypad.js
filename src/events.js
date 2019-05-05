@@ -22,9 +22,9 @@ window.addEventListener(EVENTS.BUTTON_PRESS.ALIAS, e => {
     emmitter.publish(EVENTS.BUTTON_PRESS.ALIAS, e);
 });
 
-const pressEvent = eventData => new CustomEvent(EVENTS.BUTTON_PRESS.ALIAS, { detail: eventData });
+const listenToButtonEvents = id => {
+    const pressEvent = eventData => new CustomEvent(EVENTS.BUTTON_PRESS.ALIAS, { detail: eventData });
 
-export function listenToButtonEvents(id) {
     if ('getGamepads' in window.navigator) {
         const gamepads = window.navigator.getGamepads();
 
@@ -46,3 +46,5 @@ export function listenToButtonEvents(id) {
         }
     }
 };
+
+export { listenToButtonEvents }
