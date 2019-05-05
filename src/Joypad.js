@@ -2,7 +2,6 @@
 
 import emmitter from './emitter';
 import { EVENTS } from './constants';
-import loop from './loop';
 
 const joypad = {
     list: {},
@@ -35,13 +34,7 @@ const joypad = {
 
             gamepadInstance.vibrationActuator.playEffect(type, options);
         }
-    },
-    // stop: function () {
-    //     loop.stop(loop.id);
-    // },
-    // start: function () {
-    //     loop.start();
-    // }.call()
+    }
 };
 
 export default joypad;
