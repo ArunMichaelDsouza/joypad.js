@@ -5,7 +5,7 @@ const emmitter = {
     publish: function (event, data) {
         if (this.events.hasOwnProperty(event)) {
             this.events[event].forEach(listener => {
-                listener(data);
+                return listener(data);
             });
         }
     },

@@ -6,26 +6,26 @@ import { loopGamepadInstances } from './helpers';
 
 const loop = {
     id: null,
-    updateGamepadStatus: function () {
+    updateGamepadInstances: function () {
         loopGamepadInstances((gamepad, index) => {
-            joypad.list[index] = gamepad;
+            return joypad.list[index] = gamepad;
         });
     },
     start: function () {
         this.id = window.requestAnimationFrame(this.start.bind(this));
         joypad.loopStarted = true;
 
-        this.updateGamepadStatus();
+        this.updateGamepadInstances();
         listenToButtonEvents(this.id);
     },
     stop: function (id) {
-        window.cancelAnimationFrame(id);
+        return window.cancelAnimationFrame(id);
     },
     restart: function (id) {
         const { buttonPressThreshold } = joypad.settings;
 
         this.stop(id);
-        setTimeout(() => { this.start(); }, buttonPressThreshold);
+        return setTimeout(() => { this.start(); }, buttonPressThreshold);
     }
 };
 
