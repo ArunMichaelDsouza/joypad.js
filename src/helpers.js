@@ -8,7 +8,7 @@ const loopGamepadInstances = callback => {
             const gamepad = gamepads[index];
 
             if (gamepad) {
-                callback(gamepad);
+                callback(gamepad, index);
             }
         });
     }

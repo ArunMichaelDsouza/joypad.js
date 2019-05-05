@@ -2,21 +2,14 @@
 
 import joypad from './joypad';
 import { listenToButtonEvents } from './events';
+import { loopGamepadInstances } from './helpers';
 
 const loop = {
     id: null,
     updateGamepadStatus: function () {
-        const gamepads = window.navigator.getGamepads();
-
-        if (Object.keys(gamepads).length) {
-            Object.keys(gamepads).forEach(i => {
-                const gamepad = gamepads[i];
-
-                if (gamepad) {
-                    joypad.list[i] = gamepad;
-                }
-            });
-        }
+        loopGamepadInstances((gamepad, index) => {
+            joypad.list[index] = gamepad;
+        });
     },
     start: function () {
         this.id = window.requestAnimationFrame(this.start.bind(this));
