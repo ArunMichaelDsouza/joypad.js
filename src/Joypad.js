@@ -4,6 +4,7 @@ import emmitter from './emitter';
 import { EVENTS } from './constants';
 
 const joypad = {
+    loopStarted: false,
     list: {},
     add: function (gamepadInstance) {
         const { index } = gamepadInstance;

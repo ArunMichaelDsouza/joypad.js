@@ -6,7 +6,10 @@ import joypad from './joypad';
 import loop from './loop';
 
 window.addEventListener(EVENTS.CONNECT.NATIVE, e => {
-    loop.start();
+    if (!joypad.loopStarted) {
+        loop.start();
+    }
+
     joypad.add(e.gamepad);
     emmitter.publish(EVENTS.CONNECT.ALIAS, e);
 });
