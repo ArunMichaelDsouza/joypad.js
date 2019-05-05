@@ -22,9 +22,9 @@ const joypad = {
             case EVENTS.DISCONNECT.ALIAS:
                 emmitter.subscribe(EVENTS.DISCONNECT.ALIAS, callback);
                 break;
-            // case EVENTS.OTHER.BUTTON_PRESS:
-            //     emmitter.subscribe(EVENTS.OTHER.BUTTON_PRESS, callback);
-            //     break;
+            case EVENTS.BUTTON_PRESS.ALIAS:
+                emmitter.subscribe(EVENTS.BUTTON_PRESS.ALIAS, callback);
+                break;
         }
     },
     vibrate: function (gamepadInstance, options) {
