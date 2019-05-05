@@ -29,7 +29,7 @@ const joypad = {
     vibrate: function (gamepadInstance, options) {
         const { vibrationActuator } = gamepadInstance;
 
-        if (vibrationActuator) {
+        if (vibrationActuator && vibrationActuator.type && vibrationActuator.playEffect && typeof vibrationActuator.playEffect === 'function') {
             const { type } = vibrationActuator;
 
             gamepadInstance.vibrationActuator.playEffect(type, options);

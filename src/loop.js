@@ -6,7 +6,6 @@ const loop = {
     id: null,
     start: function () {
         this.id = window.requestAnimationFrame(this.start.bind(this));
-        console.log('test');
         // listenToButtonEvents(this.id);
     },
     stop: function (id) {
