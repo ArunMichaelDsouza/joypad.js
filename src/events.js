@@ -5,23 +5,24 @@ import { EVENTS } from './constants';
 import joypad from './joypad';
 import loop from './loop';
 
-window.addEventListener(EVENTS.CONNECT.NATIVE, e => {
-    emmitter.publish(EVENTS.CONNECT.ALIAS, e);
-    if (!joypad.loopStarted) {
-        loop.start();
-    }
-    joypad.add(e.gamepad);
-});
+const initEventListeners = () => {
+    window.addEventListener(EVENTS.CONNECT.NATIVE, e => {
+        emmitter.publish(EVENTS.CONNECT.ALIAS, e);
+        if (!joypad.loopStarted) {
+            loop.start();
+        }
+        joypad.add(e.gamepad);
+    });
 
-window.addEventListener(EVENTS.DISCONNECT.NATIVE, e => {
-    emmitter.publish(EVENTS.DISCONNECT.ALIAS, e);
-    joypad.remove(e.gamepad.index);
-});
+    window.addEventListener(EVENTS.DISCONNECT.NATIVE, e => {
+        emmitter.publish(EVENTS.DISCONNECT.ALIAS, e);
+        joypad.remove(e.gamepad.index);
+    });
 
-window.addEventListener(EVENTS.BUTTON_PRESS.ALIAS, e => {
-    emmitter.publish(EVENTS.BUTTON_PRESS.ALIAS, e);
-});
-
+    window.addEventListener(EVENTS.BUTTON_PRESS.ALIAS, e => {
+        emmitter.publish(EVENTS.BUTTON_PRESS.ALIAS, e);
+    });
+};
 const listenToButtonEvents = id => {
     const pressEvent = eventData => new CustomEvent(EVENTS.BUTTON_PRESS.ALIAS, { detail: eventData });
 
@@ -47,4 +48,5 @@ const listenToButtonEvents = id => {
     }
 };
 
+initEventListeners();
 export { listenToButtonEvents }
