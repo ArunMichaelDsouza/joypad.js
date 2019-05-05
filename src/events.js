@@ -11,7 +11,7 @@ window.addEventListener(EVENTS.CONNECT.NATIVE, e => {
 });
 
 window.addEventListener(EVENTS.DISCONNECT.NATIVE, e => {
-    joypad.remove(e.gamepad.displayId);
+    joypad.remove(e.gamepad.index);
     emmitter.publish(EVENTS.DISCONNECT.ALIAS, e);
 });
 
