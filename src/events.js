@@ -11,14 +11,11 @@ const initEventListeners = () => {
         if (!joypad.loopStarted) {
             loop.start();
         }
-        joypad.add(e.gamepad);
     });
-
     window.addEventListener(EVENTS.DISCONNECT.NATIVE, e => {
         emmitter.publish(EVENTS.DISCONNECT.ALIAS, e);
         joypad.remove(e.gamepad.index);
     });
-
     window.addEventListener(EVENTS.BUTTON_PRESS.ALIAS, e => {
         emmitter.publish(EVENTS.BUTTON_PRESS.ALIAS, e);
     });

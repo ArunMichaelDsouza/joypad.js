@@ -9,11 +9,6 @@ const joypad = {
     settings: {
         buttonPressThreshold: BUTTON_PRESS_THRESHOLD
     },
-    add: function (gamepadInstance) {
-        const { index } = gamepadInstance;
-
-        this.list[index] = gamepadInstance;
-    },
     remove: function (index) {
         delete this.list[index];
     },
