@@ -2,7 +2,6 @@
 
 import joypad from './joypad';
 import { listenToButtonEvents } from './events';
-import { BUTTON_PRESS_THRESHOLD } from './constants';
 
 const loop = {
     id: null,
@@ -16,9 +15,10 @@ const loop = {
         window.cancelAnimationFrame(id);
     },
     restart: function (id) {
-        this.stop(id);
+        const { buttonPressThreshold } = joypad.settings;
 
-        setTimeout(() => { this.start(); }, BUTTON_PRESS_THRESHOLD);
+        this.stop(id);
+        setTimeout(() => { this.start(); }, buttonPressThreshold);
     }
 };
 

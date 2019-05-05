@@ -1,11 +1,14 @@
 // Joypad instance
 
 import emmitter from './emitter';
-import { EVENTS } from './constants';
+import { EVENTS, BUTTON_PRESS_THRESHOLD } from './constants';
 
 const joypad = {
     loopStarted: false,
     list: {},
+    settings: {
+        buttonPressThreshold: BUTTON_PRESS_THRESHOLD
+    },
     add: function (gamepadInstance) {
         const { index } = gamepadInstance;
 
@@ -35,6 +38,11 @@ const joypad = {
 
             gamepadInstance.vibrationActuator.playEffect(type, options);
         }
+    },
+    set: function (settings) {
+        const { buttonPressThreshold } = settings;
+
+        this.settings.buttonPressThreshold = buttonPressThreshold;
     }
 };
 
