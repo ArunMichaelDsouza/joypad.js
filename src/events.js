@@ -6,17 +6,16 @@ import joypad from './joypad';
 import loop from './loop';
 
 window.addEventListener(EVENTS.CONNECT.NATIVE, e => {
+    emmitter.publish(EVENTS.CONNECT.ALIAS, e);
     if (!joypad.loopStarted) {
         loop.start();
     }
-
     joypad.add(e.gamepad);
-    emmitter.publish(EVENTS.CONNECT.ALIAS, e);
 });
 
 window.addEventListener(EVENTS.DISCONNECT.NATIVE, e => {
-    joypad.remove(e.gamepad.index);
     emmitter.publish(EVENTS.DISCONNECT.ALIAS, e);
+    joypad.remove(e.gamepad.index);
 });
 
 window.addEventListener(EVENTS.BUTTON_PRESS.ALIAS, e => {

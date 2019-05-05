@@ -14,5 +14,6 @@ const EVENTS = {
         ALIAS: 'press'
     }
 };
+const BUTTON_PRESS_THRESHOLD = 150;
 
-export { EVENTS };
+export { EVENTS, BUTTON_PRESS_THRESHOLD };

@@ -2,6 +2,7 @@
 
 import joypad from './joypad';
 import { listenToButtonEvents } from './events';
+import { BUTTON_PRESS_THRESHOLD } from './constants';
 
 const loop = {
     id: null,
@@ -17,7 +18,7 @@ const loop = {
     restart: function (id) {
         this.stop(id);
 
-        setTimeout(() => { this.start(); }, 220);
+        setTimeout(() => { this.start(); }, BUTTON_PRESS_THRESHOLD);
     }
 };
 
