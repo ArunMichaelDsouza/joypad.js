@@ -15,7 +15,11 @@ const initEventListeners = () => {
     });
     window.addEventListener(EVENTS.DISCONNECT.NATIVE, e => {
         emmitter.publish(EVENTS.DISCONNECT.ALIAS, e);
-        return joypad.remove(e.gamepad.index);
+        joypad.remove(e.gamepad.index);
+        if (!Object.keys(joypad.list).length) {
+            joypad.loopStarted = false;
+            loop.stop(loop.id);
+        }
     });
     window.addEventListener(EVENTS.BUTTON_PRESS.ALIAS, e => {
         return emmitter.publish(EVENTS.BUTTON_PRESS.ALIAS, e);
