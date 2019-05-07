@@ -18,7 +18,7 @@ const initEventListeners = () => {
         joypad.remove(e.gamepad.index);
         if (!Object.keys(joypad.list).length) {
             joypad.loopStarted = false;
-            loop.stop(loop.id);
+            return loop.stop(loop.id);
         }
     });
     window.addEventListener(EVENTS.BUTTON_PRESS.ALIAS, e => {
