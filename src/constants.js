@@ -12,9 +12,12 @@ const EVENTS = {
     BUTTON_PRESS: {
         NATIVE: null,
         ALIAS: 'press'
+    },
+    AXIS_MOVEMENT: {
+        NATIVE: null,
+        ALIAS: 'move'
     }
 };
 const BUTTON_PRESS_THRESHOLD = 150;
-const VENDOR_PREFIXES = ['webkit', 'moz'];
 
-export { EVENTS, BUTTON_PRESS_THRESHOLD, VENDOR_PREFIXES };
+export { EVENTS, BUTTON_PRESS_THRESHOLD };
