@@ -15,5 +15,6 @@ const EVENTS = {
     }
 };
 const BUTTON_PRESS_THRESHOLD = 150;
+const VENDOR_PREFIXES = ['webkit', 'moz'];
 
-export { EVENTS, BUTTON_PRESS_THRESHOLD };
+export { EVENTS, BUTTON_PRESS_THRESHOLD, VENDOR_PREFIXES };
