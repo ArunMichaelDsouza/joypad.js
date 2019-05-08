@@ -2,7 +2,7 @@
 
 import joypad from './joypad';
 import { listenToButtonEvents } from './events';
-import { loopGamepadInstances } from './helpers';
+import { loopGamepadInstances, requestAnimationFrame, cancelAnimationFrame } from './helpers';
 
 const loop = {
     id: null,
@@ -12,14 +12,14 @@ const loop = {
         });
     },
     start: function () {
-        this.id = window.requestAnimationFrame(this.start.bind(this));
+        this.id = requestAnimationFrame(this.start.bind(this));
         joypad.loopStarted = true;
 
         this.updateGamepadInstances();
         listenToButtonEvents(this.id);
     },
     stop: function (id) {
-        return window.cancelAnimationFrame(id);
+        return cancelAnimationFrame(id);
     },
     restart: function (id) {
         const { buttonPressThreshold } = joypad.settings;
