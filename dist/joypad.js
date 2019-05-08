@@ -94,7 +94,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"EVENTS\", function() { return EVENTS; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"BUTTON_PRESS_THRESHOLD\", function() { return BUTTON_PRESS_THRESHOLD; });\n// Global constants \n\nconst EVENTS = {\n    CONNECT: {\n        NATIVE: 'gamepadconnected',\n        ALIAS: 'connect'\n    },\n    DISCONNECT: {\n        NATIVE: 'gamepaddisconnected',\n        ALIAS: 'disconnect'\n    },\n    BUTTON_PRESS: {\n        NATIVE: null,\n        ALIAS: 'press'\n    },\n    AXIS_MOVEMENT: {\n        NATIVE: null,\n        ALIAS: 'move'\n    }\n};\nconst BUTTON_PRESS_THRESHOLD = 150;\n\n\n\n//# sourceURL=webpack:///./src/constants.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"EVENTS\", function() { return EVENTS; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"BUTTON_PRESS_THRESHOLD\", function() { return BUTTON_PRESS_THRESHOLD; });\n// Global constants \n\nconst EVENTS = {\n    CONNECT: {\n        NATIVE: 'gamepadconnected',\n        ALIAS: 'connect'\n    },\n    DISCONNECT: {\n        NATIVE: 'gamepaddisconnected',\n        ALIAS: 'disconnect'\n    },\n    BUTTON_PRESS: {\n        NATIVE: null,\n        ALIAS: 'button_press'\n    },\n    AXIS_MOVEMENT: {\n        NATIVE: null,\n        ALIAS: 'axis_move'\n    }\n};\nconst BUTTON_PRESS_THRESHOLD = 150;\n\n\n\n//# sourceURL=webpack:///./src/constants.js?");
 
 /***/ }),
 

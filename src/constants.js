@@ -11,11 +11,11 @@ const EVENTS = {
     },
     BUTTON_PRESS: {
         NATIVE: null,
-        ALIAS: 'press'
+        ALIAS: 'button_press'
     },
     AXIS_MOVEMENT: {
         NATIVE: null,
-        ALIAS: 'move'
+        ALIAS: 'axis_move'
     }
 };
 const BUTTON_PRESS_THRESHOLD = 150;
