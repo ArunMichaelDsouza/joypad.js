@@ -1,7 +1,7 @@
 // Main loop
 
 import joypad from './joypad';
-import { listenToButtonEvents } from './events';
+import { listenToButtonEvents, listenToAxisMovements } from './events';
 import { loopGamepadInstances } from './helpers';
 
 const loop = {
@@ -17,6 +17,7 @@ const loop = {
 
         this.updateGamepadInstances();
         listenToButtonEvents(this.id);
+        listenToAxisMovements();
     },
     stop: function (id) {
         return window.cancelAnimationFrame(id);
