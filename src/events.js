@@ -3,7 +3,7 @@
 import emmitter from './emitter';
 import joypad from './joypad';
 import loop from './loop';
-import { EVENTS, AXIS_MOVEMENT_THRESHOLD } from './constants';
+import { EVENTS, AXIS_MOVEMENT_THRESHOLD, AXIS_LEFT, AXIS_RIGHT } from './constants';
 import { loopGamepadInstances } from './helpers';
 
 const initEventListeners = () => {
@@ -44,11 +44,21 @@ const listenToAxisMovements = () => {
 
     return loopGamepadInstances(gamepad => {
         const { axes } = gamepad;
-        const totalAxes = axes.length;
+        const totalAxisIndexes = axes.length;
+        const totalAxes = totalAxisIndexes / 2;
 
         axes.forEach((axis, index) => {
             if (Math.abs(axis) > AXIS_MOVEMENT_THRESHOLD) {
-                console.log(totalAxes, index, axis);
+                let axisMovedIndex = index;
+                let axisMoved = null;
+
+                if (index < totalAxes) {
+                    axisMoved = AXIS_LEFT;
+                } else {
+                    axisMoved = AXIS_RIGHT;
+                }
+
+                console.log(axisMoved, axisMovedIndex);
             }
         });
     });
