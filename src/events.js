@@ -3,7 +3,7 @@
 import emmitter from './emitter';
 import joypad from './joypad';
 import loop from './loop';
-import { EVENTS, AXIS_MOVEMENT_THRESHOLD, AXIS_LEFT, AXIS_RIGHT } from './constants';
+import { EVENTS, AXIS_MOVEMENT_THRESHOLD, AXIS } from './constants';
 import { loopGamepadInstances } from './helpers';
 
 const initEventListeners = () => {
@@ -51,14 +51,29 @@ const listenToAxisMovements = () => {
             if (Math.abs(axis) > AXIS_MOVEMENT_THRESHOLD) {
                 let axisMovedIndex = index;
                 let axisMoved = null;
+                let movement = null;
 
-                if (index < totalAxes) {
-                    axisMoved = AXIS_LEFT;
+                if (axisMovedIndex < totalAxes) {
+                    axisMoved = AXIS.LEFT;
                 } else {
-                    axisMoved = AXIS_RIGHT;
+                    axisMoved = AXIS.RIGHT;
                 }
 
-                console.log(axisMoved, axisMovedIndex);
+                if (axisMovedIndex === AXIS.X) {
+                    movement = axis < 0 ? AXIS.LEFT : AXIS.RIGHT;
+                }
+
+                if (axisMovedIndex === AXIS.Y) {
+                    movement = axis < 0 ? AXIS.TOP : AXIS.BOTTOM;
+                }
+
+                console.log(movement);
+
+
+                // direction in which it is moving
+                // direction value
+
+                // console.log(axisMoved, axisMovedIndex);
             }
         });
     });

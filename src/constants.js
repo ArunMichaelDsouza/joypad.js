@@ -19,8 +19,14 @@ const EVENTS = {
     }
 };
 const BUTTON_PRESS_THRESHOLD = 150;
-const AXIS_MOVEMENT_THRESHOLD = 0.1;
-const AXIS_LEFT = 'left';
-const AXIS_RIGHT = 'right';
+const AXIS_MOVEMENT_THRESHOLD = 0.8;
+const AXIS = {
+    X: 0,
+    Y: 1,
+    LEFT: 'left',
+    RIGHT: 'right',
+    TOP: 'top',
+    BOTTOM: 'bottom',
+};
 
-export { EVENTS, BUTTON_PRESS_THRESHOLD, AXIS_MOVEMENT_THRESHOLD, AXIS_LEFT, AXIS_RIGHT };
+export { EVENTS, BUTTON_PRESS_THRESHOLD, AXIS_MOVEMENT_THRESHOLD, AXIS };
