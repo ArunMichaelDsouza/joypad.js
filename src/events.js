@@ -3,7 +3,7 @@
 import emmitter from './emitter';
 import joypad from './joypad';
 import loop from './loop';
-import { EVENTS, AXIS_MOVEMENT_THRESHOLD, AXIS } from './constants';
+import { EVENTS, AXIS_MOVEMENT_THRESHOLD, STICKS, DIRECTIONS } from './constants';
 import { loopGamepadInstances } from './helpers';
 
 const initEventListeners = () => {
@@ -49,31 +49,24 @@ const listenToAxisMovements = () => {
 
         axes.forEach((axis, index) => {
             if (Math.abs(axis) > AXIS_MOVEMENT_THRESHOLD) {
-                let axisMovedIndex = index;
-                let axisMoved = null;
-                let movement = null;
+                let axisMoved = null; // Stick which is moved (left, right)
+                let direction = null; // Direction of movement (top, bottom, left, right)
+                let axisMovementValue = axis;
 
-                if (axisMovedIndex < totalAxes) {
-                    axisMoved = AXIS.LEFT;
+                if (index < totalAxes) {
+                    axisMoved = STICKS.LEFT.NAME;
                 } else {
-                    axisMoved = AXIS.RIGHT;
+                    axisMoved = STICKS.RIGHT.NAME;
                 }
 
-                if (axisMovedIndex === AXIS.X) {
-                    movement = axis < 0 ? AXIS.LEFT : AXIS.RIGHT;
+                if (index === STICKS.LEFT.AXES.X || index === STICKS.RIGHT.AXES.X) {
+                    direction = axis < 0 ? DIRECTIONS.LEFT : DIRECTIONS.RIGHT;
+                }
+                if (index === STICKS.LEFT.AXES.Y || index === STICKS.RIGHT.AXES.Y) {
+                    direction = axis < 0 ? DIRECTIONS.TOP : DIRECTIONS.BOTTOM;
                 }
 
-                if (axisMovedIndex === AXIS.Y) {
-                    movement = axis < 0 ? AXIS.TOP : AXIS.BOTTOM;
-                }
-
-                console.log(movement);
-
-
-                // direction in which it is moving
-                // direction value
-
-                // console.log(axisMoved, axisMovedIndex);
+                // Total joysticks, joystick moved, direction of movement, movement value
             }
         });
     });
