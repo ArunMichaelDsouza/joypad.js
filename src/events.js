@@ -24,6 +24,9 @@ const initEventListeners = () => {
     window.addEventListener(EVENTS.BUTTON_PRESS.ALIAS, e => {
         return emmitter.publish(EVENTS.BUTTON_PRESS.ALIAS, e);
     });
+    window.addEventListener(EVENTS.AXIS_MOVEMENT.ALIAS, e => {
+        return emmitter.publish(EVENTS.AXIS_MOVEMENT.ALIAS, e);
+    });
 };
 const listenToButtonEvents = id => {
     const buttonPressEvent = eventData => new CustomEvent(EVENTS.BUTTON_PRESS.ALIAS, { detail: eventData });
@@ -45,28 +48,29 @@ const listenToAxisMovements = () => {
     return loopGamepadInstances(gamepad => {
         const { axes } = gamepad;
         const totalAxisIndexes = axes.length;
-        const totalAxes = totalAxisIndexes / 2;
+        const totalSticks = totalAxisIndexes / 2;
 
         axes.forEach((axis, index) => {
             if (Math.abs(axis) > AXIS_MOVEMENT_THRESHOLD) {
-                let axisMoved = null; // Stick which is moved (left, right)
-                let direction = null; // Direction of movement (top, bottom, left, right)
+                let stickMoved = null;
+                let directionOfMovement = null;
                 let axisMovementValue = axis;
 
-                if (index < totalAxes) {
-                    axisMoved = STICKS.LEFT.NAME;
+                if (index < totalSticks) {
+                    stickMoved = STICKS.LEFT.NAME;
                 } else {
-                    axisMoved = STICKS.RIGHT.NAME;
+                    stickMoved = STICKS.RIGHT.NAME;
                 }
 
                 if (index === STICKS.LEFT.AXES.X || index === STICKS.RIGHT.AXES.X) {
-                    direction = axis < 0 ? DIRECTIONS.LEFT : DIRECTIONS.RIGHT;
+                    directionOfMovement = axis < 0 ? DIRECTIONS.LEFT : DIRECTIONS.RIGHT;
                 }
                 if (index === STICKS.LEFT.AXES.Y || index === STICKS.RIGHT.AXES.Y) {
-                    direction = axis < 0 ? DIRECTIONS.TOP : DIRECTIONS.BOTTOM;
+                    directionOfMovement = axis < 0 ? DIRECTIONS.TOP : DIRECTIONS.BOTTOM;
                 }
 
-                // Total joysticks, joystick moved, direction of movement, movement value
+                const eventData = { totalSticks, stickMoved, directionOfMovement, axisMovementValue };
+                return window.dispatchEvent(axisMovementEvent(eventData));
             }
         });
     });

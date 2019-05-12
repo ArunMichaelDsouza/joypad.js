@@ -24,6 +24,9 @@ const joypad = {
             case EVENTS.BUTTON_PRESS.ALIAS:
                 emmitter.subscribe(EVENTS.BUTTON_PRESS.ALIAS, callback);
                 break;
+            case EVENTS.AXIS_MOVEMENT.ALIAS:
+                emmitter.subscribe(EVENTS.AXIS_MOVEMENT.ALIAS, callback);
+                break;
         }
     },
     vibrate: function (gamepadInstance, options) {
