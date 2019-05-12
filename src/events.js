@@ -70,7 +70,7 @@ const listenToAxisMovements = () => {
                     directionOfMovement = axis < 0 ? DIRECTIONS.TOP : DIRECTIONS.BOTTOM;
                 }
 
-                const eventData = { totalSticks, stickMoved, directionOfMovement, axisMovementValue };
+                const eventData = { gamepad, totalSticks, stickMoved, directionOfMovement, axisMovementValue };
                 return window.dispatchEvent(axisMovementEvent(eventData));
             }
         });
