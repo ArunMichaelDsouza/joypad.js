@@ -3,7 +3,7 @@
 import emmitter from './emitter';
 import joypad from './joypad';
 import loop from './loop';
-import { EVENTS, AXIS_MOVEMENT_THRESHOLD, STICKS, DIRECTIONS } from './constants';
+import { EVENTS, STICKS, DIRECTIONS } from './constants';
 import { loopGamepadInstances } from './helpers';
 
 const initEventListeners = () => {
@@ -44,6 +44,7 @@ const listenToButtonEvents = id => {
 };
 const listenToAxisMovements = () => {
     const axisMovementEvent = eventData => new CustomEvent(EVENTS.AXIS_MOVEMENT.ALIAS, { detail: eventData });
+    const { axisMovementThreshold } = joypad.settings;
 
     return loopGamepadInstances(gamepad => {
         const { axes } = gamepad;
@@ -51,7 +52,7 @@ const listenToAxisMovements = () => {
         const totalSticks = totalAxisIndexes / 2;
 
         axes.forEach((axis, index) => {
-            if (Math.abs(axis) > AXIS_MOVEMENT_THRESHOLD) {
+            if (Math.abs(axis) > axisMovementThreshold) {
                 let stickMoved = null;
                 let directionOfMovement = null;
                 let axisMovementValue = axis;
