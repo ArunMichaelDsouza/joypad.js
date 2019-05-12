@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "node_modules/.bin/webpack --output-filename joypad.min.js --mode production --progress",
-    "watch": "node_modules/.bin/webpack --output-filename joypad.js --mode development --progress --watch"
+    "watch": "node_modules/.bin/webpack --output-filename joypad.js --mode development --progress --watch",
+    "start": "npm run build && npm run watch"
   },
   "repository": {
     "type": "git",
