@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Joypad.js moving ball example</title>
+    <meta charset="UTF-8" />
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            font-family: sans-serif;
+        }
+
+        .info {
+            position: absolute;
+            right: 0;
+            color: #fff;
+            background-color: #222;
+            padding: 15px;
+            z-index: 1;
+        }
+
+        .info>h2 {
+            font-weight: 400;
+            font-size: 1em;
+            margin: 0;
+        }
+
+        .info>p {
+            font-weight: 300;
+            font-size: .85em;
+            margin: 25px auto 0;
+        }
+
+        #ball {
+            background-color: #504ae2;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="info">
+        <h2 id="heading"></h2>
+        <p id="message"></p>
+    </div>
+    <div id="ball"></div>
+    <script src="../dist//joypad.min.js"></script>
+    <script>
+        let ball = document.getElementById('ball');
+        let heading = document.getElementById('heading');
+        let message = document.getElementById('message');
+        let ballMovements = { left: 0, top: 0 };
+
+        function resetInfo(e) {
+            heading.innerText = 'No controller connected!';
+            message.innerText = 'Please connect a controller and press any key to start.';
+        };
+
+        function updateInfo(e) {
+            const { gamepad } = e;
+
+            heading.innerText = 'Controller connected!';
+            message.innerText = gamepad.id + '\n\n' + 'Use the left stick to move the ball.';
+        };
+
+        function moveBall(e) {
+            const { directionOfMovement, stickMoved } = e.detail;
+            const pixelsToMove = 6;
+
+            if (stickMoved === 'left_stick') {
+                switch (directionOfMovement) {
+                    case 'left':
+                        ballMovements.left += -pixelsToMove;
+                        ball.style.left = ballMovements.left + 'px';
+                        break;
+                    case 'right':
+                        ballMovements.left += pixelsToMove;
+                        ball.style.left = ballMovements.left + 'px';
+                        break;
+                    case 'top':
+                        ballMovements.top += -pixelsToMove;
+                        ball.style.top = ballMovements.top + 'px';
+                        break;
+                    case 'bottom':
+                        ballMovements.top += pixelsToMove;
+                        ball.style.top = ballMovements.top + 'px';
+                        break;
+                }
+            }
+        }
+
+        resetInfo();
+        joypad.set({ axisMovementThreshold: 0.3 });
+        joypad.on('connect', e => updateInfo(e));
+        joypad.on('disconnect', e => resetInfo(e));
+        joypad.on('axis_move', e => moveBall(e));
+    </script>
+</body>
+
+</html>
