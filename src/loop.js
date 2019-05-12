@@ -12,7 +12,8 @@ const loop = {
         });
     },
     start: function () {
-        this.id = window.requestAnimationFrame(this.start.bind(this));
+        const requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame;
+        this.id = requestAnimationFrame(this.start.bind(this));
         joypad.loopStarted = true;
 
         this.updateGamepadInstances();
@@ -20,7 +21,9 @@ const loop = {
         listenToAxisMovements();
     },
     stop: function (id) {
-        return window.cancelAnimationFrame(id);
+        const cancelAnimationFrame = window.cancelAnimationFrame || window.webkitCancelAnimationFrame;
+
+        return cancelAnimationFrame(id);
     },
     restart: function (id) {
         const { buttonPressThreshold } = joypad.settings;
