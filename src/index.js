@@ -9,12 +9,3 @@ if (window.navigator.getGamepads && typeof window.navigator.getGamepads === 'fun
 } else {
     log('Your browser does not support the Gamepad API - https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API');
 }
-
-/*
- uses -
- requestAnimationFrame
- Gamepad API
- customevent
- Object.keys
- ES6
- */
