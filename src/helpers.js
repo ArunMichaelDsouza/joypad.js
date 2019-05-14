@@ -20,5 +20,7 @@ const log = message => {
         console.log(message);
     }
 };
+const hasVibrationSupport = vibrationActuator => vibrationActuator && vibrationActuator.type && vibrationActuator.playEffect && typeof vibrationActuator.playEffect === 'function';
+const hasGamepadApiSupport = () => window.navigator.getGamepads && typeof window.navigator.getGamepads === 'function';
 
-export { loopGamepadInstances, log };
+export { loopGamepadInstances, log, hasVibrationSupport, hasGamepadApiSupport };

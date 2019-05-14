@@ -2,7 +2,7 @@
 
 import emmitter from './emitter';
 import { EVENTS, BUTTON_PRESS_THRESHOLD, AXIS_MOVEMENT_THRESHOLD } from './constants';
-import { log } from './helpers';
+import { log, hasVibrationSupport } from './helpers';
 
 const joypad = {
     loopStarted: false,
@@ -33,7 +33,7 @@ const joypad = {
     vibrate: function (gamepadInstance, options) {
         const { vibrationActuator } = gamepadInstance;
 
-        if (vibrationActuator && vibrationActuator.type && vibrationActuator.playEffect && typeof vibrationActuator.playEffect === 'function') {
+        if (hasVibrationSupport(vibrationActuator)) {
             const { type } = vibrationActuator;
 
             return gamepadInstance.vibrationActuator.playEffect(type, options);
