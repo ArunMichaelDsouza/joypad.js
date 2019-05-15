@@ -16,6 +16,11 @@ const loop = {
         this.id = requestAnimationFrame(this.start.bind(this));
         joypad.loopStarted = true;
 
+        loopGamepadInstances((gamepad, index) => {
+            if (!joypad.events.gamepad[index]) {
+                joypad.events.gamepad[index] = {};
+            }
+        });
         this.updateGamepadInstances();
         listenToButtonEvents(this.id);
         listenToAxisMovements();

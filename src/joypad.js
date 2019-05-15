@@ -7,6 +7,9 @@ import { log, hasVibrationSupport } from './helpers';
 const joypad = {
     loopStarted: false,
     instances: {},
+    events: { 
+        joypad: [] 
+    },
     settings: {
         buttonPressThreshold: BUTTON_PRESS_THRESHOLD,
         axisMovementThreshold: AXIS_MOVEMENT_THRESHOLD
