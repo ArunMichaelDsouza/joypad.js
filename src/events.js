@@ -16,6 +16,7 @@ const initEventListeners = () => {
     window.addEventListener(EVENTS.DISCONNECT.NATIVE, e => {
         emmitter.publish(EVENTS.DISCONNECT.ALIAS, e);
         joypad.remove(e.gamepad.index);
+        joypad.events.joypad[e.gamepad.index] = null;
         if (!Object.keys(joypad.instances).length) {
             joypad.loopStarted = false;
             return loop.stop(loop.id);
