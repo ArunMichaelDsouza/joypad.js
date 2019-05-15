@@ -3,20 +3,27 @@
 import emmitter from './emitter';
 import joypad from './joypad';
 import loop from './loop';
-import { EVENTS, STICKS, DIRECTIONS, KEY_MAPPING } from './constants';
-import { findKeyMapping } from './helpers';
+import { EVENTS, STICKS, DIRECTIONS, BUTTON_MAPPING } from './constants';
+import { findButtonMapping } from './helpers';
 
 const initEventListeners = () => {
     window.addEventListener(EVENTS.CONNECT.NATIVE, e => {
         emmitter.publish(EVENTS.CONNECT.ALIAS, e);
+
+        // Start loop on gamepad connection if not already started
         if (!joypad.loopStarted) {
+            joypad.loopStarted = true;
             return loop.start();
         }
     });
     window.addEventListener(EVENTS.DISCONNECT.NATIVE, e => {
         emmitter.publish(EVENTS.DISCONNECT.ALIAS, e);
+
+        // Remove instance and reset events on gamepad disconnection
         joypad.remove(e.gamepad.index);
-        joypad.events.joypad[e.gamepad.index] = null;
+        joypad.buttonEvents.joypad[e.gamepad.index] = null;
+
+        // Stop loop if all gamepads have been disconnected
         if (!Object.keys(joypad.instances).length) {
             joypad.loopStarted = false;
             return loop.stop(loop.id);
@@ -29,48 +36,37 @@ const initEventListeners = () => {
         return emmitter.publish(EVENTS.AXIS_MOVEMENT.ALIAS, e);
     });
 };
-const handleEvent = (key, events, player) => {
-    if (events[key].pressed) {
-        console.log('press');
-        // this.trigger('press', key, events[key].value, player);
-        events[key].pressed = false;
-        events[key].hold = true;
-    } else if (events[key].hold) {
-        // this.trigger('hold', key, events[key].value, player);
-    } else if (events[key].released) {
-        // this.trigger('release', key, events[key].value, player);
-        delete events[key];
-    }
-};
 const listenToButtonEvents = gamepad => {
-    const buttonPressEvent = eventData => new CustomEvent(EVENTS.BUTTON_PRESS.ALIAS, { detail: eventData });
     gamepad.buttons.forEach((button, index) => {
-        const keys = findKeyMapping(index, KEY_MAPPING);
+        const keys = findButtonMapping(index, BUTTON_MAPPING);
+        const { buttonEvents } = joypad;
 
-        if (keys) {
+        if (keys && keys.length) {
             keys.forEach(key => {
+
+                // If button is pressed then set press status of button
                 if (button.pressed) {
-                    if (!joypad.events.joypad[gamepad.index][key]) {
-                        joypad.events.joypad[gamepad.index][key] = {
+                    if (!buttonEvents.joypad[gamepad.index][key]) {
+                        buttonEvents.joypad[gamepad.index][key] = {
                             pressed: true,
                             hold: false,
-                            released: false,
-                            player: gamepad.index
+                            released: false
                         };
                     }
-                    joypad.events.joypad[gamepad.index][key].value = button.value;
-                } else if (!button.pressed && joypad.events.joypad[gamepad.index][key]) {
-                    joypad.events.joypad[gamepad.index][key].released = true;
-                    joypad.events.joypad[gamepad.index][key].hold = false;
+
+                    // Set button event data
+                    buttonEvents.joypad[gamepad.index][key].button = button;
+                    buttonEvents.joypad[gamepad.index][key].index = index;
+                    buttonEvents.joypad[gamepad.index][key].gamepad = gamepad;
+                }
+
+                // If button is not pressed then set release status of button
+                else if (!button.pressed && buttonEvents.joypad[gamepad.index][key]) {
+                    buttonEvents.joypad[gamepad.index][key].released = true;
+                    buttonEvents.joypad[gamepad.index][key].hold = false;
                 }
             });
         }
-
-        // if (button.pressed) {
-        //     const eventData = { button, index, gamepad };
-
-        //     window.dispatchEvent(buttonPressEvent(eventData));
-        // }
     });
 };
 const listenToAxisMovements = gamepad => {
@@ -104,6 +100,32 @@ const listenToAxisMovements = gamepad => {
         }
     });
 };
+const handleButtonEvent = (buttonName, buttonEvents) => {
+    // Fire button press event
+    if (buttonEvents[buttonName].pressed) {
+        const buttonPressEvent = eventData => new CustomEvent(EVENTS.BUTTON_PRESS.ALIAS, { detail: eventData });
+        const { index, gamepad } = buttonEvents[buttonName];
+        const eventData = {
+            buttonName,
+            button: buttonEvents[buttonName].button,
+            index,
+            gamepad
+        };
+        window.dispatchEvent(buttonPressEvent(eventData));
+
+        // Reset button usage flags
+        buttonEvents[buttonName].pressed = false;
+        buttonEvents[buttonName].hold = true;
+    }
+
+    // Button being held
+    else if (buttonEvents[buttonName].hold) { }
+
+    // Button being released
+    else if (buttonEvents[buttonName].released) {
+        delete buttonEvents[buttonName];
+    }
+};
 
 initEventListeners();
-export { listenToButtonEvents, listenToAxisMovements, handleEvent }
+export { listenToButtonEvents, listenToAxisMovements, handleButtonEvent }

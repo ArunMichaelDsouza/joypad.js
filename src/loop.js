@@ -1,13 +1,14 @@
 // Main loop
 
 import joypad from './joypad';
-import { listenToButtonEvents, listenToAxisMovements, handleEvent } from './events';
+import { listenToButtonEvents, listenToAxisMovements, handleButtonEvent } from './events';
 
 const loop = {
     id: null,
     start: function () {
         const requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame;
         const gamepads = window.navigator.getGamepads();
+        const { buttonEvents } = joypad;
 
         // Loop all the gamepads on each frame
         if (Object.keys(gamepads).length) {
@@ -16,8 +17,8 @@ const loop = {
 
                 if (gamepad) {
                     // Initialise joypad instance events if not present
-                    if (!joypad.events.joypad[index]) {
-                        joypad.events.joypad[index] = {};
+                    if (!buttonEvents.joypad[index]) {
+                        buttonEvents.joypad[index] = {};
                     }
 
                     // Update gamepad instance data
@@ -32,18 +33,17 @@ const loop = {
             });
         }
 
-        // Set loop start flag and recursively call the start function on each frame
-        joypad.loopStarted = true;
-        this.id = requestAnimationFrame(this.start.bind(this));
-
-
-        joypad.events.joypad.forEach((gamepad, player) => {
-            if (gamepad) {
-                Object.keys(gamepad).forEach(key => {
-                    handleEvent(key, gamepad, player);
+        // Handle button events on each frame
+        buttonEvents.joypad.forEach(events => {
+            if (events) {
+                Object.keys(events).forEach(key => {
+                    handleButtonEvent(key, events);
                 });
             }
         });
+
+        // Set loop start flag and recursively call the start function on each frame
+        this.id = requestAnimationFrame(this.start.bind(this));
     },
     stop: function (id) {
         const cancelAnimationFrame = window.cancelAnimationFrame || window.webkitCancelAnimationFrame;

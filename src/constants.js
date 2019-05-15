@@ -40,7 +40,7 @@ const DIRECTIONS = {
     TOP: 'top',
     BOTTOM: 'bottom'
 };
-const KEY_MAPPING = {
+const BUTTON_MAPPING = {
     'button_1': 0,
     'button_2': 1,
     'button_3': 2,
@@ -62,4 +62,4 @@ const KEY_MAPPING = {
 };
 const AXIS_MOVEMENT_THRESHOLD = 0.8;
 
-export { EVENTS, STICKS, DIRECTIONS, KEY_MAPPING, AXIS_MOVEMENT_THRESHOLD };
+export { EVENTS, STICKS, DIRECTIONS, BUTTON_MAPPING, AXIS_MOVEMENT_THRESHOLD };

@@ -7,7 +7,7 @@ import { log, hasVibrationSupport } from './helpers';
 const joypad = {
     loopStarted: false,
     instances: {},
-    events: {
+    buttonEvents: {
         joypad: []
     },
     settings: {
