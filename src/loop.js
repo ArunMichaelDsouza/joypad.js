@@ -2,28 +2,39 @@
 
 import joypad from './joypad';
 import { listenToButtonEvents, listenToAxisMovements, handleEvent } from './events';
-import { loopGamepadInstances } from './helpers';
 
 const loop = {
     id: null,
-    updateGamepadInstances: function () {
-        loopGamepadInstances((gamepad, index) => {
-            return joypad.instances[index] = gamepad;
-        });
-    },
     start: function () {
         const requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame;
-        this.id = requestAnimationFrame(this.start.bind(this));
-        joypad.loopStarted = true;
+        const gamepads = window.navigator.getGamepads();
 
-        loopGamepadInstances((gamepad, index) => {
-            if (!joypad.events.joypad[index]) {
-                joypad.events.joypad[index] = {};
-            }
-        });
-        this.updateGamepadInstances();
-        listenToButtonEvents(this.id);
-        listenToAxisMovements();
+        //
+        if (Object.keys(gamepads).length) {
+            Object.keys(gamepads).forEach(index => {
+                const gamepad = gamepads[index];
+
+                if (gamepad) {
+                    //
+                    if (!joypad.events.joypad[index]) {
+                        joypad.events.joypad[index] = {};
+                    }
+
+                    //
+                    joypad.instances[index] = gamepad;
+
+                    //
+                    listenToButtonEvents(gamepad);
+
+                    //
+                    listenToAxisMovements(gamepad);
+                }
+            });
+        }
+
+        joypad.loopStarted = true;
+        this.id = requestAnimationFrame(this.start.bind(this));
+
 
         joypad.events.joypad.forEach((gamepad, player) => {
             if (gamepad) {

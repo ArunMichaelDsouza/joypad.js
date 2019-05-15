@@ -1,18 +1,5 @@
 // Helper functions
 
-const loopGamepadInstances = callback => {
-    const gamepads = window.navigator.getGamepads();
-
-    if (Object.keys(gamepads).length) {
-        Object.keys(gamepads).forEach(index => {
-            const gamepad = gamepads[index];
-
-            if (gamepad) {
-                return callback(gamepad, index);
-            }
-        });
-    }
-};
 const log = message => {
     if (console.warn && typeof console.warn === 'function') {
         console.warn(message);
@@ -36,4 +23,4 @@ const findKeyMapping = (index, mapping) => {
 const hasVibrationSupport = vibrationActuator => vibrationActuator && vibrationActuator.type && vibrationActuator.playEffect && typeof vibrationActuator.playEffect === 'function';
 const hasGamepadApiSupport = () => window.navigator.getGamepads && typeof window.navigator.getGamepads === 'function';
 
-export { loopGamepadInstances, log, findKeyMapping, hasVibrationSupport, hasGamepadApiSupport };
+export { log, findKeyMapping, hasVibrationSupport, hasGamepadApiSupport };

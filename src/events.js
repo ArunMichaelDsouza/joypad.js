@@ -4,7 +4,7 @@ import emmitter from './emitter';
 import joypad from './joypad';
 import loop from './loop';
 import { EVENTS, STICKS, DIRECTIONS, KEY_MAPPING } from './constants';
-import { loopGamepadInstances, findKeyMapping } from './helpers';
+import { findKeyMapping } from './helpers';
 
 const initEventListeners = () => {
     window.addEventListener(EVENTS.CONNECT.NATIVE, e => {
@@ -42,72 +42,66 @@ const handleEvent = (key, events, player) => {
         delete events[key];
     }
 };
-const listenToButtonEvents = id => {
+const listenToButtonEvents = gamepad => {
     const buttonPressEvent = eventData => new CustomEvent(EVENTS.BUTTON_PRESS.ALIAS, { detail: eventData });
+    gamepad.buttons.forEach((button, index) => {
+        const keys = findKeyMapping(index, KEY_MAPPING);
 
-    return loopGamepadInstances(gamepad => {
-        gamepad.buttons.forEach((button, index) => {
-            const keys = findKeyMapping(index, KEY_MAPPING);
-
-            if (keys) {
-                keys.forEach(key => {
-                    if (button.pressed) {
-                        if (!joypad.events.joypad[gamepad.index][key]) {
-                            joypad.events.joypad[gamepad.index][key] = {
-                                pressed: true,
-                                hold: false,
-                                released: false,
-                                player: gamepad.index
-                            };
-                        }
-                        joypad.events.joypad[gamepad.index][key].value = button.value;
-                    } else if (!button.pressed && joypad.events.joypad[gamepad.index][key]) {
-                        joypad.events.joypad[gamepad.index][key].released = true;
-                        joypad.events.joypad[gamepad.index][key].hold = false;
+        if (keys) {
+            keys.forEach(key => {
+                if (button.pressed) {
+                    if (!joypad.events.joypad[gamepad.index][key]) {
+                        joypad.events.joypad[gamepad.index][key] = {
+                            pressed: true,
+                            hold: false,
+                            released: false,
+                            player: gamepad.index
+                        };
                     }
-                });
-            }
+                    joypad.events.joypad[gamepad.index][key].value = button.value;
+                } else if (!button.pressed && joypad.events.joypad[gamepad.index][key]) {
+                    joypad.events.joypad[gamepad.index][key].released = true;
+                    joypad.events.joypad[gamepad.index][key].hold = false;
+                }
+            });
+        }
 
-            // if (button.pressed) {
-            //     const eventData = { button, index, gamepad };
+        // if (button.pressed) {
+        //     const eventData = { button, index, gamepad };
 
-            //     window.dispatchEvent(buttonPressEvent(eventData));
-            // }
-        });
+        //     window.dispatchEvent(buttonPressEvent(eventData));
+        // }
     });
 };
-const listenToAxisMovements = () => {
+const listenToAxisMovements = gamepad => {
     const axisMovementEvent = eventData => new CustomEvent(EVENTS.AXIS_MOVEMENT.ALIAS, { detail: eventData });
     const { axisMovementThreshold } = joypad.settings;
+    const { axes } = gamepad;
+    const totalAxisIndexes = axes.length;
+    const totalSticks = totalAxisIndexes / 2;
 
-    return loopGamepadInstances(gamepad => {
-        const { axes } = gamepad;
-        const totalAxisIndexes = axes.length;
-        const totalSticks = totalAxisIndexes / 2;
+    axes.forEach((axis, index) => {
+        if (Math.abs(axis) > axisMovementThreshold) {
+            let stickMoved = null;
+            let directionOfMovement = null;
+            let axisMovementValue = axis;
 
-        axes.forEach((axis, index) => {
-            if (Math.abs(axis) > axisMovementThreshold) {
-                let stickMoved = null;
-                let directionOfMovement = null;
-                let axisMovementValue = axis;
-
-                if (index < totalSticks) {
-                    stickMoved = STICKS.LEFT.NAME;
-                } else {
-                    stickMoved = STICKS.RIGHT.NAME;
-                }
-
-                if (index === STICKS.LEFT.AXES.X || index === STICKS.RIGHT.AXES.X) {
-                    directionOfMovement = axis < 0 ? DIRECTIONS.LEFT : DIRECTIONS.RIGHT;
-                }
-                if (index === STICKS.LEFT.AXES.Y || index === STICKS.RIGHT.AXES.Y) {
-                    directionOfMovement = axis < 0 ? DIRECTIONS.TOP : DIRECTIONS.BOTTOM;
-                }
-
-                const eventData = { gamepad, totalSticks, stickMoved, directionOfMovement, axisMovementValue };
-                return window.dispatchEvent(axisMovementEvent(eventData));
+            if (index < totalSticks) {
+                stickMoved = STICKS.LEFT.NAME;
+            } else {
+                stickMoved = STICKS.RIGHT.NAME;
             }
-        });
+
+            if (index === STICKS.LEFT.AXES.X || index === STICKS.RIGHT.AXES.X) {
+                directionOfMovement = axis < 0 ? DIRECTIONS.LEFT : DIRECTIONS.RIGHT;
+            }
+            if (index === STICKS.LEFT.AXES.Y || index === STICKS.RIGHT.AXES.Y) {
+                directionOfMovement = axis < 0 ? DIRECTIONS.TOP : DIRECTIONS.BOTTOM;
+            }
+
+            const eventData = { gamepad, totalSticks, stickMoved, directionOfMovement, axisMovementValue };
+            return window.dispatchEvent(axisMovementEvent(eventData));
+        }
     });
 };
 
