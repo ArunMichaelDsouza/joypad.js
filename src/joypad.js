@@ -6,13 +6,13 @@ import { log, hasVibrationSupport } from './helpers';
 
 const joypad = {
     loopStarted: false,
-    list: {},
+    instances: {},
     settings: {
         buttonPressThreshold: BUTTON_PRESS_THRESHOLD,
         axisMovementThreshold: AXIS_MOVEMENT_THRESHOLD
     },
     remove: function (index) {
-        return delete this.list[index];
+        return delete this.instances[index];
     },
     on: function (event, callback) {
         switch (event) {

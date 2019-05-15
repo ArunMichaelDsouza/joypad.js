@@ -8,7 +8,7 @@ const loop = {
     id: null,
     updateGamepadInstances: function () {
         loopGamepadInstances((gamepad, index) => {
-            return joypad.list[index] = gamepad;
+            return joypad.instances[index] = gamepad;
         });
     },
     start: function () {
