@@ -1,17 +1,16 @@
 // Joypad instance
 
 import emmitter from './emitter';
-import { EVENTS, BUTTON_PRESS_THRESHOLD, AXIS_MOVEMENT_THRESHOLD } from './constants';
+import { EVENTS, AXIS_MOVEMENT_THRESHOLD } from './constants';
 import { log, hasVibrationSupport } from './helpers';
 
 const joypad = {
     loopStarted: false,
     instances: {},
-    events: { 
-        joypad: [] 
+    events: {
+        joypad: []
     },
     settings: {
-        buttonPressThreshold: BUTTON_PRESS_THRESHOLD,
         axisMovementThreshold: AXIS_MOVEMENT_THRESHOLD
     },
     remove: function (index) {
@@ -45,9 +44,8 @@ const joypad = {
         }
     },
     set: function (settings) {
-        const { buttonPressThreshold, axisMovementThreshold } = settings;
+        const { axisMovementThreshold } = settings;
 
-        this.settings.buttonPressThreshold = buttonPressThreshold;
         this.settings.axisMovementThreshold = axisMovementThreshold;
     }
 };

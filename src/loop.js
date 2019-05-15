@@ -37,12 +37,6 @@ const loop = {
         const cancelAnimationFrame = window.cancelAnimationFrame || window.webkitCancelAnimationFrame;
 
         return cancelAnimationFrame(id);
-    },
-    restart: function (id) {
-        const { buttonPressThreshold } = joypad.settings;
-
-        this.stop(id);
-        return setTimeout(() => { this.start(); }, buttonPressThreshold);
     }
 };
 

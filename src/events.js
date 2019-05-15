@@ -72,7 +72,6 @@ const listenToButtonEvents = id => {
             //     const eventData = { button, index, gamepad };
 
             //     window.dispatchEvent(buttonPressEvent(eventData));
-            //     return loop.restart(id);
             // }
         });
     });
