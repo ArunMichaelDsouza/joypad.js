@@ -57,8 +57,8 @@ const BUTTON_MAPPING = {
     'd_pad_down': 13,
     'd_pad_left': 14,
     'd_pad_right': 15,
-    'vendor': 16,
-    'vendor': 17
+    'vendor_1': 16,
+    'vendor_2': 17
 };
 const AXIS_MOVEMENT_THRESHOLD = 0.8;
 
