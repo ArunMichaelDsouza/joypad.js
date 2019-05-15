@@ -20,7 +20,11 @@ const findKeyMapping = (index, mapping) => {
 
     return results;
 };
-const hasVibrationSupport = vibrationActuator => vibrationActuator && vibrationActuator.type && vibrationActuator.playEffect && typeof vibrationActuator.playEffect === 'function';
-const hasGamepadApiSupport = () => window.navigator.getGamepads && typeof window.navigator.getGamepads === 'function';
+const hasVibrationSupport = vibrationActuator => {
+    return vibrationActuator && vibrationActuator.type && vibrationActuator.playEffect && typeof vibrationActuator.playEffect === 'function';
+};
+const hasGamepadApiSupport = () => {
+    return window.navigator.getGamepads && typeof window.navigator.getGamepads === 'function';
+};
 
 export { log, findKeyMapping, hasVibrationSupport, hasGamepadApiSupport };

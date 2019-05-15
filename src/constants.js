@@ -18,7 +18,6 @@ const EVENTS = {
         ALIAS: 'axis_move'
     }
 };
-const AXIS_MOVEMENT_THRESHOLD = 0.8;
 const STICKS = {
     LEFT: {
         NAME: 'left_stick',
@@ -61,5 +60,6 @@ const KEY_MAPPING = {
     'vendor': 16,
     'vendor': 17
 };
+const AXIS_MOVEMENT_THRESHOLD = 0.8;
 
-export { EVENTS, AXIS_MOVEMENT_THRESHOLD, STICKS, DIRECTIONS, KEY_MAPPING };
+export { EVENTS, STICKS, DIRECTIONS, KEY_MAPPING, AXIS_MOVEMENT_THRESHOLD };
