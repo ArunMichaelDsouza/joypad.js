@@ -45,8 +45,11 @@ const joypad = {
     },
     set: function (settings) {
         const { axisMovementThreshold } = settings;
+        const parsedValue = parseFloat(axisMovementThreshold);
 
-        this.settings.axisMovementThreshold = axisMovementThreshold;
+        if (!isNaN(parsedValue)) {
+            this.settings.axisMovementThreshold = parsedValue;
+        }
     }
 };
 
