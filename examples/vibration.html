@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Joypad.js vibration example</title>
+    <meta charset="UTF-8" />
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            font-family: sans-serif;
+        }
+
+        .info {
+            position: absolute;
+            right: 0;
+            color: #fff;
+            background-color: #222;
+            padding: 15px;
+            z-index: 1;
+        }
+
+        .info>h2 {
+            font-weight: 400;
+            font-size: 1em;
+            margin: 0;
+        }
+
+        .info>p {
+            font-weight: 300;
+            font-size: .85em;
+            margin: 25px auto 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="info">
+        <h2 id="heading"></h2>
+        <p id="message"></p>
+    </div>
+    <script src="../dist//joypad.min.js"></script>
+    <script>
+        let heading = document.getElementById('heading');
+        let message = document.getElementById('message');
+
+        function resetInfo(e) {
+            heading.innerText = 'No controller connected!';
+            message.innerText = 'Please connect a controller and press any key to start.';
+        };
+
+        function updateInfo(e) {
+            const { gamepad } = e;
+
+            heading.innerText = 'Controller connected!';
+            message.innerText = gamepad.id + '\n\n' + 'Press the blue button on the screen to make the controller vibrate.';
+        };
+
+        resetInfo();
+        joypad.set({ axisMovementThreshold: 0.3 });
+        joypad.on('connect', e => updateInfo(e));
+        joypad.on('disconnect', e => resetInfo(e));
+    </script>
+</body>
+
+</html>
