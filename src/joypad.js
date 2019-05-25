@@ -34,19 +34,21 @@ const joypad = {
     },
     vibrate: function (gamepadInstance, options) {
         const { vibrationActuator } = gamepadInstance;
+        const vibrationSettings = this.settings.vibration ? this.settings.vibration : options;
 
         if (hasVibrationSupport(vibrationActuator)) {
             const { type } = vibrationActuator;
 
-            return gamepadInstance.vibrationActuator.playEffect(type, options);
+            return gamepadInstance.vibrationActuator.playEffect(type, vibrationSettings);
         } else {
             log('No vibration actuator interface found - https://developer.mozilla.org/en-US/docs/Web/API/GamepadHapticActuator');
         }
     },
     set: function (settings) {
-        const { axisMovementThreshold } = settings;
+        const { axisMovementThreshold, vibration } = settings;
         const parsedValue = parseFloat(axisMovementThreshold);
 
+        this.settings.vibration = vibration;
         if (!isNaN(parsedValue)) {
             this.settings.axisMovementThreshold = parsedValue;
         }
