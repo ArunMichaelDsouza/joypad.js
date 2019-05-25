@@ -33,6 +33,20 @@
             font-size: .85em;
             margin: 25px auto 0;
         }
+
+        #vibrate {
+            background-color: #547ae2;
+            color: #fff;
+            font-weight: 300;
+            border-radius: 3px;
+            text-align: center;
+            width: 80px;
+            cursor: pointer;
+            position: absolute;
+            top: 180px;
+            padding: 20px 80px;
+            left: calc(50% - 120px);
+        }
     </style>
 </head>
 
@@ -41,10 +55,12 @@
         <h2 id="heading"></h2>
         <p id="message"></p>
     </div>
+    <div id="vibrate">Vibrate</div>
     <script src="../dist//joypad.min.js"></script>
     <script>
         let heading = document.getElementById('heading');
         let message = document.getElementById('message');
+        let vibrateButton = document.getElementById('vibrate');
 
         function resetInfo(e) {
             heading.innerText = 'No controller connected!';
@@ -55,11 +71,28 @@
             const { gamepad } = e;
 
             heading.innerText = 'Controller connected!';
-            message.innerText = gamepad.id + '\n\n' + 'Press the blue button on the screen to make the controller vibrate.';
+            message.innerText = gamepad.id + '\n\n' + 'Press the blue button on the screen to make the connected controllers vibrate.';
+        };
+
+        function vibrateController() {
+            const connectedControllers = window.joypad.instances;
+
+            if (Object.keys(connectedControllers).length) {
+                Object.keys(connectedControllers).forEach(controller => {
+                    const gamepadInstance = connectedControllers[controller];
+
+                    joypad.vibrate(gamepadInstance, {
+                        startDelay: 0,
+                        duration: 1000,
+                        weakMagnitude: 1,
+                        strongMagnitude: 1
+                    });
+                });
+            }
         };
 
         resetInfo();
-        joypad.set({ axisMovementThreshold: 0.3 });
+        vibrateButton.addEventListener('click', vibrateController);
         joypad.on('connect', e => updateInfo(e));
         joypad.on('disconnect', e => resetInfo(e));
     </script>
