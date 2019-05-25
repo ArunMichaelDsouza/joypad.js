@@ -1,6 +1,6 @@
 // Joypad instance
 
-import emmitter from './emitter';
+import emitter from './emitter';
 import { EVENTS, AXIS_MOVEMENT_THRESHOLD } from './constants';
 import { log, hasVibrationSupport } from './helpers';
 
@@ -19,16 +19,16 @@ const joypad = {
     on: function (event, callback) {
         switch (event) {
             case EVENTS.CONNECT.ALIAS:
-                emmitter.subscribe(EVENTS.CONNECT.ALIAS, callback);
+                emitter.subscribe(EVENTS.CONNECT.ALIAS, callback);
                 break;
             case EVENTS.DISCONNECT.ALIAS:
-                emmitter.subscribe(EVENTS.DISCONNECT.ALIAS, callback);
+                emitter.subscribe(EVENTS.DISCONNECT.ALIAS, callback);
                 break;
             case EVENTS.BUTTON_PRESS.ALIAS:
-                emmitter.subscribe(EVENTS.BUTTON_PRESS.ALIAS, callback);
+                emitter.subscribe(EVENTS.BUTTON_PRESS.ALIAS, callback);
                 break;
             case EVENTS.AXIS_MOVEMENT.ALIAS:
-                emmitter.subscribe(EVENTS.AXIS_MOVEMENT.ALIAS, callback);
+                emitter.subscribe(EVENTS.AXIS_MOVEMENT.ALIAS, callback);
                 break;
         }
     },

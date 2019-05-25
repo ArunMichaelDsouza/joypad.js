@@ -1,6 +1,6 @@
 // Joypad events
 
-import emmitter from './emitter';
+import emitter from './emitter';
 import joypad from './joypad';
 import loop from './loop';
 import { EVENTS, STICKS, DIRECTIONS, BUTTON_MAPPING } from './constants';
@@ -8,7 +8,7 @@ import { findButtonMapping } from './helpers';
 
 const initEventListeners = () => {
     window.addEventListener(EVENTS.CONNECT.NATIVE, e => {
-        emmitter.publish(EVENTS.CONNECT.ALIAS, e);
+        emitter.publish(EVENTS.CONNECT.ALIAS, e);
 
         // Start loop on gamepad connection if not already started
         if (!joypad.loopStarted) {
@@ -17,7 +17,7 @@ const initEventListeners = () => {
         }
     });
     window.addEventListener(EVENTS.DISCONNECT.NATIVE, e => {
-        emmitter.publish(EVENTS.DISCONNECT.ALIAS, e);
+        emitter.publish(EVENTS.DISCONNECT.ALIAS, e);
 
         // Remove instance and reset events on gamepad disconnection
         joypad.remove(e.gamepad.index);
@@ -30,10 +30,10 @@ const initEventListeners = () => {
         }
     });
     window.addEventListener(EVENTS.BUTTON_PRESS.ALIAS, e => {
-        return emmitter.publish(EVENTS.BUTTON_PRESS.ALIAS, e);
+        return emitter.publish(EVENTS.BUTTON_PRESS.ALIAS, e);
     });
     window.addEventListener(EVENTS.AXIS_MOVEMENT.ALIAS, e => {
-        return emmitter.publish(EVENTS.AXIS_MOVEMENT.ALIAS, e);
+        return emitter.publish(EVENTS.AXIS_MOVEMENT.ALIAS, e);
     });
 };
 const listenToButtonEvents = gamepad => {

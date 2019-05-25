@@ -1,6 +1,6 @@
-// Pub-sub module
+// Events emitter
 
-const emmitter = {
+const emitter = {
     events: {},
     publish: function (event, data) {
         if (this.events.hasOwnProperty(event)) {
@@ -23,4 +23,4 @@ const emmitter = {
     }
 };
 
-export default emmitter;
+export default emitter;
