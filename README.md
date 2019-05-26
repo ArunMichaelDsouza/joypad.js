@@ -2,7 +2,7 @@
 
 # joypad.js
 JavaScript library that lets you connect and use various gaming controllers with browsers that support the [Gamepad API](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API).
-> Just 5KB in size, zero dependencies with support for button press, axis movement events and vibration.
+> Less than 5KB in size with zero dependencies and support for button press, axis movement events and vibration play effect.
 
 <br/>
 
