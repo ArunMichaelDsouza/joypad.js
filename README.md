@@ -54,7 +54,7 @@ Lists all the connected [Gamepad](https://developer.mozilla.org/en-US/docs/Web/A
 
 ### ``joypad.on(event, callback) {method}``
 
-Used to attach event listeners to joypad.js events. It takes 2 parameters, an ``event`` name (which is a string) and a ``callback`` function which is fired whenever the specified event is triggered.
+Used to attach event listeners to joypad.js events. It takes 2 parameters, an ``event`` name (which is a string) and a ``callback`` function which is fired whenever the specified event is triggered. View all of the supported events [here](user-content-events).
 
 ### ``joypad.set({settings}) {method}``
 
@@ -66,7 +66,7 @@ Lists all the global settings applied to joypad.js.
 
 ### ``joypad.vibrate(gamepad, options) {method}``
 
-Triggers the vibration play effect for a particular ``gamepad`` (which is an instance of [Gamepad](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad]). The ``options`` parameter needs to be an object with the required vibration setting values to be applied.
+Triggers the vibration play effect for a particular ``gamepad`` (which is an instance of [Gamepad](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad)). The ``options`` parameter needs to be an object with the required vibration setting values to be applied.
 
 <br/>
 
