@@ -26,8 +26,28 @@ Or, [download](https://github.com/ArunMichaelDsouza/joypad.js/releases) the late
 
 ## Usage
 
+Once joypad.js is installed and included in your project it becomes available on the global window scope - ``window.joypad``.
+
+```javascript
+console.log(window.joypad); // {loopStarted: false, instances: {…}, buttonEvents: {…}, settings: {…}, remove: ƒ, …}
+```
+
+If you're working with ``ES6`` modules you can include the library as follows -
+
 ```javascript
 import * as joypad from 'joypad.js';
 ```
 
+Once set up you can start listening to joypad events like so -
+
+```javascript
+joypad.on('connect', e => {
+    const { id } = e.gamepad;
+
+    console.log(`${id} connected!`);
+});
+```
+
 <br/>
+
+## API
