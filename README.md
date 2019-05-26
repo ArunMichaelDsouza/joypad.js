@@ -26,11 +26,7 @@ Or, [download](https://github.com/ArunMichaelDsouza/joypad.js/releases) the late
 
 ## Usage
 
-Once joypad.js is installed and included in your project it becomes available on the global window scope - ``window.joypad``.
-
-```javascript
-console.log(window.joypad); // {loopStarted: false, instances: {…}, buttonEvents: {…}, settings: {…}, remove: ƒ, …}
-```
+Once joypad.js is installed and included in your project it becomes available on the global scope - ``window.joypad``. 
 
 If you're working with ``ES6`` modules you can include the library as follows -
 
@@ -38,7 +34,7 @@ If you're working with ``ES6`` modules you can include the library as follows -
 import * as joypad from 'joypad.js';
 ```
 
-Once set up you can start listening to joypad events like so -
+Once set up you can start listening to joypad.js events like so -
 
 ```javascript
 joypad.on('connect', e => {
@@ -51,3 +47,27 @@ joypad.on('connect', e => {
 <br/>
 
 ## API
+
+### ``joypad.instances {object}``
+
+Lists all the connected [Gamepad](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad) instances. Each instance defines an individual gamepad or controller with access to information such as button presses, axis positions, id, index etc.
+
+### ``joypad.on(event, callback) {method}``
+
+Used to attach event listeners to joypad.js events. It takes 2 parameters, an ``event`` name (which is a string) and a ``callback`` function which is fired whenever the specified event is triggered.
+
+### ``joypad.set({settings}) {method}``
+
+Used to set the global settings for joypad.js such as the threshold for axis movement and options for vibration play effect. It expects a single parameter, which is an object with the required setting values to be applied.
+
+### ``joypad.settings {object}``
+
+Lists all the global settings applied to joypad.js.
+
+### ``joypad.vibrate(gamepad, options) {method}``
+
+Triggers the vibration play effect for a particular ``gamepad`` (which is an instance of (Gamepad)[https://developer.mozilla.org/en-US/docs/Web/API/Gamepad]). The ``options`` parameter needs to be an object with the required vibration setting values to be applied.
+
+<br/>
+
+## Events
