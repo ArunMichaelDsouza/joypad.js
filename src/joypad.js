@@ -34,7 +34,7 @@ const joypad = {
     },
     vibrate: function (gamepadInstance, options) {
         const { vibrationActuator } = gamepadInstance;
-        const vibrationSettings = this.settings.vibration ? this.settings.vibration : options;
+        const vibrationSettings = options ? options : this.settings.vibration;
 
         if (hasVibrationSupport(vibrationActuator)) {
             const { type } = vibrationActuator;

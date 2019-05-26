@@ -56,7 +56,7 @@
         <p id="message"></p>
     </div>
     <div id="vibrate">Vibrate</div>
-    <script src="../dist/joypad.min.js"></script>
+    <script src="../dist/joypad.js"></script>
     <script>
         let heading = document.getElementById('heading');
         let message = document.getElementById('message');
@@ -80,19 +80,29 @@
             if (Object.keys(connectedControllers).length) {
                 Object.keys(connectedControllers).forEach(controller => {
                     const gamepadInstance = connectedControllers[controller];
-
-                    joypad.vibrate(gamepadInstance, {
+                    const options = {
                         startDelay: 0,
                         duration: 1000,
                         weakMagnitude: 1,
                         strongMagnitude: 1
-                    });
+                    };
+
+                    // These options replace the global vibration settings
+                    joypad.vibrate(gamepadInstance, options);
                 });
             }
         };
 
         resetInfo();
         vibrateButton.addEventListener('click', vibrateController);
+        joypad.set({
+            vibration: {
+                startDelay: 500,
+                duration: 2000,
+                weakMagnitude: 1,
+                strongMagnitude: 1
+            }
+        });
         joypad.on('connect', e => updateInfo(e));
         joypad.on('disconnect', e => resetInfo(e));
     </script>

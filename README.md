@@ -66,7 +66,7 @@ Lists all the global settings applied to joypad.js.
 
 ### ``joypad.vibrate(gamepad, options) {method}``
 
-Triggers the vibration play effect for a particular ``gamepad`` (which is an instance of (Gamepad)[https://developer.mozilla.org/en-US/docs/Web/API/Gamepad]). The ``options`` parameter needs to be an object with the required vibration setting values to be applied.
+Triggers the vibration play effect for a particular ``gamepad`` (which is an instance of [Gamepad](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad]). The ``options`` parameter needs to be an object with the required vibration setting values to be applied.
 
 <br/>
 
