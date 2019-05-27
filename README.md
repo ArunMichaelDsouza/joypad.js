@@ -50,7 +50,11 @@ joypad.on('connect', e => {
 
 ### ``joypad.instances {object}``
 
-Lists all the connected [Gamepad](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad) instances. Each instance defines an individual gamepad or controller with access to information such as button presses, axis positions, id, index etc.
+Lists all the connected [Gamepad](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad) instances. Each instance defines an individual gamepad or controller with access to information such as button presses, axis movements, id, index etc.
+
+```javascript
+console.log(joypad.instances); // {0: Gamepad {id: "Wireless Contr..", index: 0 ..}, 1: Gamepad {id: "Wireless Contr..", index: 1 ..}}
+```
 
 ### ``joypad.on(event, callback) {method}``
 
@@ -70,17 +74,49 @@ View all of the supported events [here](#user-content-events).
 
 Used to set the global settings for joypad.js such as the threshold for axis movement and options for vibration play effect. It expects a single parameter, which is an object with the required setting values to be applied.
 
+```javascript
+joypad.set({
+    axisMovementThreshold: 0.3
+});
+```
+
+View all of the available settings [here](#user-content-settings).
+
 ### ``joypad.settings {object}``
 
 Lists all the global settings applied to joypad.js.
 
+```javascript
+console.log(joypad.settings); // {axisMovementThreshold: 0.3, vibration: {..}}
+```
+
 ### ``joypad.vibrate(gamepad, options) {method}``
 
-Triggers the vibration play effect for a particular ``gamepad`` (which is an instance of [Gamepad](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad)). The ``options`` parameter needs to be an object with the required vibration setting values to be applied.
+Triggers the vibration play effect for a particular ``gamepad`` (which is an instance of [Gamepad](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad)). The ``options`` parameter is an object with the required vibration setting values to be applied.
+
+```javascript
+joypad.on('connect', e => {
+    const { gamepad } = e;
+    const options = {
+        startDelay: 500,
+        duration: 2000,
+        weakMagnitude: 1,
+        strongMagnitude: 1
+    };
+
+    joypad.vibrate(gamepad, options);
+});
+```
+
+View all of the available settings [here](#user-content-settings).
 
 <br/>
 
 ## Events
+
+<br/>
+
+## Settings
 
 <br/>
 

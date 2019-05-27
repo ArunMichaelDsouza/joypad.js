@@ -47,6 +47,10 @@
             padding: 20px 80px;
             left: calc(50% - 120px);
         }
+
+        #vibrate:hover {
+            background-color: #1c41a7;
+        }
     </style>
 </head>
 
@@ -82,12 +86,12 @@
                     const gamepadInstance = connectedControllers[controller];
                     const options = {
                         startDelay: 0,
-                        duration: 1000,
+                        duration: 2000,
                         weakMagnitude: 1,
                         strongMagnitude: 1
                     };
 
-                    // These options replace the global vibration settings
+                    // These options override the global vibration settings
                     joypad.vibrate(gamepadInstance, options);
                 });
             }
@@ -96,9 +100,10 @@
         resetInfo();
         vibrateButton.addEventListener('click', vibrateController);
         joypad.set({
+            // Global vibration settings
             vibration: {
                 startDelay: 500,
-                duration: 2000,
+                duration: 3000,
                 weakMagnitude: 1,
                 strongMagnitude: 1
             }
