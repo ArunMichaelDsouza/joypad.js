@@ -54,7 +54,17 @@ Lists all the connected [Gamepad](https://developer.mozilla.org/en-US/docs/Web/A
 
 ### ``joypad.on(event, callback) {method}``
 
-Used to attach event listeners to joypad.js events. It takes 2 parameters, an ``event`` name (which is a string) and a ``callback`` function which is fired whenever the specified event is triggered. View all of the supported events [here](#user-content-events).
+Used to attach event listeners to joypad.js events. It takes 2 parameters, an ``event`` name (which is a string) and a ``callback`` function which is fired whenever the specified event is triggered.
+
+```javascript
+joypad.on('button_press', e => {
+    const { buttonName } = e.detail;
+
+    console.log(`${buttonName} was pressed!`);
+});
+```
+
+View all of the supported events [here](#user-content-events).
 
 ### ``joypad.set({settings}) {method}``
 
