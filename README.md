@@ -72,7 +72,7 @@ View all of the supported events [here](#user-content-events).
 
 ### ``joypad.set({settings}) {method}``
 
-Used to set the global settings for joypad.js such as the threshold for axis movement and options for vibration play effect. It expects a single parameter, which is an object with the required setting values to be applied.
+Used to set the global ``settings`` for joypad.js such as the threshold for axis movement and options for vibration play effect. It expects a single parameter, which is an object with the required setting values to be applied.
 
 ```javascript
 joypad.set({
@@ -108,11 +108,27 @@ joypad.on('connect', e => {
 });
 ```
 
-View all of the available settings [here](#user-content-settings).
+> Note: Options passed to the vibrate method will override the global vibration settings.
 
 <br/>
 
 ## Events
+
+### ``connect``
+
+Fired whenever a controller is connected.
+
+### ``disconnect``
+
+Fired whenever a controller is disconnected.
+
+### ``button_press``
+
+Fired whenever a controller's button is pressed.
+
+### ``axis_move``
+
+Fired whenever a controller's axis (joystick) is moved.
 
 <br/>
 
