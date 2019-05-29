@@ -126,9 +126,36 @@ Fired whenever a controller is disconnected.
 
 Fired whenever a controller's button is pressed.
 
+joypad.js supports the ``standard`` gamepad button layout which is supported by most controllers in which button locations are layed out in a left cluster of four buttons, a right cluster of four buttons , a center cluster of three buttons, and a pair of front facing buttons (shoulder buttons) on the left and right side of the gamepad. 
+
+The following table describes the default button mappings -
+
+| Button    | Location                       |
+|-----------|--------------------------------|
+| button_0  | Bottom button in right cluster |
+| button_1  | Right button in right cluster  |
+| button_2  | Left button in right cluster   |
+| button_3  | Top button in right cluster    |
+| button_4  | Shoulder left front button     |
+| button_5  | Shoulder right front button    |
+| button_6  | Shoulder left back button      |
+| button_7  | Shoulder right back button     |
+| button_8  | Left button in center cluster  |
+| button_9  | Right button in center cluster |
+| button_10 | Left stick pressed button      |
+| button_11 | Right stick pressed button     |
+| button_12 | Top button in left cluster     |
+| button_13 | Bottom button in left cluster  |
+| button_14 | Right button in left cluster   |
+| button_15 | Left button in left cluster    |
+| button_16 | Vendor button 1                |
+| button_17 | Vendor button 2                |
+
 ### ``axis_move``
 
-Fired whenever a controller's axis (joystick) is moved.
+Fired whenever a controller's axis (analog stick) is moved.
+
+The standard button layout has four axes associated with a pair of analog sticks, one on the left and one on the right.
 
 <br/>
 
