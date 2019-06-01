@@ -41,24 +41,24 @@ const DIRECTIONS = {
     BOTTOM: 'bottom'
 };
 const BUTTON_MAPPING = {
-    'button_1': 0,
-    'button_2': 1,
-    'button_3': 2,
-    'button_4': 3,
-    'shoulder_left_1': 4,
-    'shoulder_right_1': 5,
-    'shoulder_left_2': 6,
-    'shoulder_right_2': 7,
-    'select': 8,
-    'start': 9,
-    'left_stick': 10,
-    'right_right': 11,
-    'd_pad_up': 12,
-    'd_pad_down': 13,
-    'd_pad_left': 14,
-    'd_pad_right': 15,
-    'vendor_1': 16,
-    'vendor_2': 17
+    'button_0': 0,
+    'button_1': 1,
+    'button_2': 2,
+    'button_3': 3,
+    'button_4': 4,
+    'button_5': 5,
+    'button_6': 6,
+    'button_7': 7,
+    'button_8': 8,
+    'button_9': 9,
+    'button_10': 10,
+    'button_11': 11,
+    'button_12': 12,
+    'button_13': 13,
+    'button_14': 14,
+    'button_15': 15,
+    'button_16': 16,
+    'button_17': 17
 };
 const AXIS_MOVEMENT_THRESHOLD = 0.8;
 
