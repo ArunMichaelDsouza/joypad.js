@@ -110,6 +110,8 @@ joypad.on('connect', e => {
 
 > Note: Options passed to the vibrate method will override the global vibration settings.
 
+To know about all the options supported by the vibrate method click [here](#user-content-settings).
+
 <br/>
 
 ## Events
@@ -167,6 +169,37 @@ The standard button layout has four axes associated with a pair of analog sticks
 <br/>
 
 ## Settings
+
+### ``vibration {object}``
+
+The vibration option sets the parameters for the vibration play effect. Currently there is support for a ``dual-rumble`` effect. A dual-rumble effect is a fixed-length, constant-intensity vibration effect intended for an actuator of type ``dual-rumble``. Dual-rumble effects are defined by four parameters - 
+
+#### ``startDelay {number}``
+
+Sets the duration of the delay in milliseconds after which the vibration effect is started.
+
+#### ``duration {number}``
+
+Sets the duration of the vibration effect in milliseconds.
+
+#### ``weakMagnitude {number}``
+
+Sets the rumble intensity of the high-frequency (weak) rumble motors, normalized to the range [0.0, 1.0].
+
+#### ``strongMagnitude {number}``
+
+Sets the rumble intensity of the low-frequency (strong) rumble motors, normalized to the range [0.0, 1.0].
+
+```javascript
+joypad.set({
+    vibration: {
+        startDelay: 500,
+        duration: 3000,
+        weakMagnitude: 1,
+        strongMagnitude: 1
+    }
+});
+```
 
 <br/>
 
