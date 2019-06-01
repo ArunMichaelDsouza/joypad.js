@@ -146,8 +146,8 @@ The following table describes the default button mappings -
 | button_11 | Right stick pressed button     |
 | button_12 | Top button in left cluster     |
 | button_13 | Bottom button in left cluster  |
-| button_14 | Left button in left cluster   |
-| button_15 | Right button in left cluster    |
+| button_14 | Left button in left cluster    |
+| button_15 | Right button in left cluster   |
 | button_16 | Vendor button 1                |
 | button_17 | Vendor button 2                |
 
@@ -156,6 +156,13 @@ The following table describes the default button mappings -
 Fired whenever a controller's axis (analog stick) is moved.
 
 The standard button layout has four axes associated with a pair of analog sticks, one on the left and one on the right.
+
+| Axis | Location                                                       |
+|------|----------------------------------------------------------------|
+| 0    | Horizontal axis for left stick (negative left/positive right)  |
+| 1    | Vertical axis for left stick (negative up/positive down)       |
+| 2    | Horizontal axis for right stick (negative left/positive right) |
+| 3    | Vertical axis for right stick (negative up/positive down)      |
 
 <br/>
 
