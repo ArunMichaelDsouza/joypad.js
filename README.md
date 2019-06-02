@@ -6,6 +6,20 @@ JavaScript library that lets you connect and use various gaming controllers with
 
 <br/>
 
+## Examples
+
+Working examples can be found in the ``examples`` folder in the repo - 
+
+``connection.html`` - Gamepad connection example.
+
+``jumpingBall.html`` - Button press example.
+
+``movingBall.html`` - Axis (analog stick) movement example.
+
+``vibration.html`` - Vibration play effect example.
+
+<br/>
+
 ## Installation
 
 #### via npm
@@ -172,7 +186,7 @@ The standard button layout has four axes associated with a pair of analog sticks
 
 ### ``vibration {object}``
 
-The vibration option sets the parameters for the vibration play effect. Currently there is support for a ``dual-rumble`` effect. A dual-rumble effect is a fixed-length, constant-intensity vibration effect intended for an actuator of type ``dual-rumble``. Dual-rumble effects are defined by four parameters - 
+The vibration option sets the parameters for the vibration play effect globally. Currently there is support for a ``dual-rumble`` effect. A dual-rumble effect is a fixed-length, constant-intensity vibration effect intended for an actuator of type ``dual-rumble``. Dual-rumble effects are defined by four parameters - 
 
 #### ``startDelay {number}``
 
@@ -198,6 +212,20 @@ joypad.set({
         weakMagnitude: 1,
         strongMagnitude: 1
     }
+});
+```
+
+> Note: To override the global vibration settings you can pass these parameters to the ``joypad.vibrate`` method.
+
+### ``axisMovementThreshold {number}``
+
+Sets the threshold for axis (analog stick) movement normalized to the range [0.0, 1.0]. Higher the value, more rigid will be the movement.
+
+To test the calibration of the analong sticks you can check out [html5gamepad.com](https://html5gamepad.com/) and decide a suitable value for the axis movement threshold.
+
+```javascript
+joypad.set({
+    axisMovementThreshold: 0.3
 });
 ```
 
