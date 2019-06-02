@@ -59,8 +59,14 @@
         };
 
         resetInfo();
-        joypad.on('connect', e => updateInfo(e));
-        joypad.on('disconnect', e => resetInfo(e));
+        joypad.on('connect', e => {
+            console.log(e);
+            return updateInfo(e)
+        });
+        joypad.on('disconnect', e => {
+            console.log(e);
+            return resetInfo(e);
+        });
     </script>
 </body>
 

@@ -101,7 +101,10 @@
         joypad.set({ axisMovementThreshold: 0.3 });
         joypad.on('connect', e => updateInfo(e));
         joypad.on('disconnect', e => resetInfo(e));
-        joypad.on('axis_move', e => moveBall(e));
+        joypad.on('axis_move', e => {
+            console.log(e.detail);
+            return moveBall(e)
+        });
     </script>
 </body>
 

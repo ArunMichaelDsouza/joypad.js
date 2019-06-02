@@ -68,7 +68,7 @@
             const { gamepad } = e;
 
             heading.innerText = 'Controller connected!';
-            message.innerText = gamepad.id + '\n\n' + 'Press button 1 to make the ball jump.';
+            message.innerText = gamepad.id + '\n\n' + 'Press button_0 to make the ball jump.';
         };
 
         function bounceBall() {
@@ -80,6 +80,7 @@
         joypad.on('connect', e => updateInfo(e));
         joypad.on('disconnect', e => resetInfo(e));
         joypad.on('button_press', e => {
+            console.log(e.detail);
             const { buttonName } = e.detail;
 
             if (buttonName === 'button_0') {
