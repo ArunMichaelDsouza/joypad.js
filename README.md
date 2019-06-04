@@ -1,6 +1,6 @@
 <img src="https://github.com/ArunMichaelDsouza/joypad.js/blob/master/icon.png?raw=true" width="250" height="auto" alt="joypad.js icon"/>
 
-# joypad.js [![npm version](https://badge.fury.io/js/react-image-appear.svg)](https://badge.fury.io/js/react-image-appear) [![NPM Downloads](https://img.shields.io/npm/dm/react-image-appear.svg?style=flat-square)](https://www.npmjs.com/package/react-image-appear)
+# joypad.js [![npm version](https://badge.fury.io/js/react-image-appear.svg)](https://badge.fury.io/js/react-image-appear) [![NPM Downloads](https://img.shields.io/npm/dm/react-image-appear.svg?style=flat-square)](https://www.npmjs.com/package/react-image-appear) [![Build Status](https://travis-ci.org/ArunMichaelDsouza/react-image-appear.svg?branch=master)](https://travis-ci.org/ArunMichaelDsouza/react-image-appear)
 JavaScript library that lets you connect and use various gaming controllers with browsers that support the [Gamepad API](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API).
 > Less than 5KB in size with zero dependencies and support for button press, axis movement events and vibration play effect.
 
