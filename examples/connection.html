@@ -41,8 +41,9 @@
         <h2 id="heading"></h2>
         <p id="message"></p>
     </div>
-    <script src="../dist/joypad.min.js"></script>
-    <script>
+    <script type="module">
+        import '../dist/joypad.min.js';
+
         let heading = document.getElementById('heading');
         let message = document.getElementById('message');
 

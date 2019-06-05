@@ -52,8 +52,9 @@
         <p id="message"></p>
     </div>
     <div id="ball"></div>
-    <script src="../dist/joypad.min.js"></script>
-    <script>
+    <script type="module">
+        import '../dist/joypad.min.js';
+
         let ball = document.getElementById('ball');
         let heading = document.getElementById('heading');
         let message = document.getElementById('message');
