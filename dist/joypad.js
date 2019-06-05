@@ -1,3 +1,8 @@
+/*
+    joypad.js v1.0.0
+    Copyright (c) 2019 Arun Michael Dsouza (amdsouza92@gmail.com)
+    Licence: MIT
+*/
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
