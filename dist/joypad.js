@@ -1,8 +1,3 @@
-/*
-    joypad.js v1.0.1
-    Copyright (c) 2019 Arun Michael Dsouza (amdsouza92@gmail.com)
-    Licence: MIT
-*/
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -147,7 +142,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./events */ \"./src/events.js\");\n/* harmony import */ var _joypad__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./joypad */ \"./src/joypad.js\");\n/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers */ \"./src/helpers.js\");\n// Entry point\n\n\n\n\n\nif (Object(_helpers__WEBPACK_IMPORTED_MODULE_2__[\"hasGamepadApiSupport\"])()) {\n    window.joypad = _joypad__WEBPACK_IMPORTED_MODULE_1__[\"default\"];\n} else {\n    Object(_helpers__WEBPACK_IMPORTED_MODULE_2__[\"log\"])('Your browser does not support the Gamepad API - https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API');\n}\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _events__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./events */ \"./src/events.js\");\n/* harmony import */ var _joypad__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./joypad */ \"./src/joypad.js\");\n/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers */ \"./src/helpers.js\");\n// Entry point\n\n\n\n\n\nif (Object(_helpers__WEBPACK_IMPORTED_MODULE_2__[\"hasGamepadApiSupport\"])()) {\n    window.joypad = _joypad__WEBPACK_IMPORTED_MODULE_1__[\"default\"];\n} else {\n    window.joypad = {};\n    Object(_helpers__WEBPACK_IMPORTED_MODULE_2__[\"log\"])('Your browser does not support the Gamepad API - https://developer.mozilla.org/en-US/docs/Web/API/Gamepad_API');\n}\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
