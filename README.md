@@ -45,7 +45,7 @@ Once joypad.js is installed and included in your project it becomes available on
 If you're working with ``ES6`` modules you can include the library as follows -
 
 ```javascript
-import * as joypad from 'joypad.js';
+import 'joypad.js';
 ```
 
 Once set up you can start listening to joypad.js events like so -
