@@ -1,5 +1,5 @@
 /*
-    joypad.js v1.1.3
+    joypad.js v1.1.4
     Copyright (c) 2019 Arun Michael Dsouza (amdsouza92@gmail.com)
     Licence: MIT
 */
