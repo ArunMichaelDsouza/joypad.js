@@ -144,9 +144,11 @@ Fired whenever a controller's button is pressed.
 
 joypad.js supports the ``standard`` gamepad button layout which is supported by most controllers in which button locations are layed out in a left cluster of four buttons, a right cluster of four buttons , a center cluster of three buttons (some controllers have four) and a pair of front facing buttons (shoulder buttons) on the left and right side of the gamepad. 
 
-<img src="https://github.com/ArunMichaelDsouza/joypad.js/blob/master/standard_gamepad_button_layout.png?raw=true" alt="Standard gamepad button layout">
+Since the Gamepad API is in very early stages, the standard gamepad button layout may differ from browser to browser.
 
-The following table describes the default button mappings -
+The following image and table describes the default button mappings as on ``Chrome`` -
+
+<img src="https://github.com/ArunMichaelDsouza/joypad.js/blob/master/standard_gamepad_button_layout.png?raw=true" alt="Standard gamepad button layout">
 
 | Button    | Location                       |
 |-----------|--------------------------------|
