@@ -126,6 +126,8 @@ joypad.on('connect', e => {
 
 To know about all the options supported by the vibrate method click [here](#user-content-settings).
 
+> Note: Since the Gamepad API is in very early stages, the vibrate method might not work on most browsers.
+
 <br/>
 
 ## Events
@@ -144,7 +146,7 @@ Fired whenever a controller's button is pressed.
 
 joypad.js supports the ``standard`` gamepad button layout which is supported by most controllers in which button locations are layed out in a left cluster of four buttons, a right cluster of four buttons , a center cluster of three buttons (some controllers have four) and a pair of front facing buttons (shoulder buttons) on the left and right side of the gamepad. 
 
-Since the Gamepad API is in very early stages, the standard gamepad button layout may differ from browser to browser.
+> Note: Since the Gamepad API is in very early stages, the standard gamepad button layout may differ from browser to browser.
 
 The following image and table describes the default button mappings as on ``Chrome`` -
 
@@ -220,6 +222,8 @@ joypad.set({
 ```
 
 > Note: To override the global vibration settings you can pass these parameters to the ``joypad.vibrate`` method.
+
+> Note: Since the Gamepad API is in very early stages, the vibrate method might not work on most browsers.
 
 ### ``axisMovementThreshold {number}``
 
