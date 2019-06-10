@@ -42,10 +42,14 @@ Or, [download](https://github.com/ArunMichaelDsouza/joypad.js/releases) the late
 
 Once joypad.js is installed and included in your project it becomes available on the global scope - ``window.joypad``. 
 
-If you're working with ``ES6`` modules you can include the library as follows -
+If you're working with ``ES6`` or ``Common JS`` modules you can include the library as follows -
 
 ```javascript
-import 'joypad.js';
+import 'joypad.js'; // ES6
+```
+
+```javascript
+require('joypad.js'); // Common JS
 ```
 
 Once set up you can start listening to joypad.js events like so -
