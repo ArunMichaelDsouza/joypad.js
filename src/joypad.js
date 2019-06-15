@@ -45,7 +45,7 @@ const joypad = {
         }
     },
     set: function (settings) {
-        const { axisMovementThreshold, vibration } = settings;
+        const { axisMovementThreshold, vibration, customButtonMapping } = settings;
         const parsedValue = parseFloat(axisMovementThreshold);
 
         this.settings.vibration = vibration;
