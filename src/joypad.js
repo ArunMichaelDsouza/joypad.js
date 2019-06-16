@@ -48,10 +48,10 @@ const joypad = {
         const { axisMovementThreshold, vibration, customButtonMapping } = settings;
         const parsedValue = parseFloat(axisMovementThreshold);
 
-        this.settings.vibration = vibration;
         if (!isNaN(parsedValue)) {
             this.settings.axisMovementThreshold = parsedValue;
         }
+        this.settings.vibration = vibration;
     }
 };
 
