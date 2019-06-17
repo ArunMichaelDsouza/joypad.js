@@ -52,6 +52,7 @@ const joypad = {
             this.settings.axisMovementThreshold = parsedValue;
         }
         this.settings.vibration = vibration;
+        this.settings.customButtonMapping = customButtonMapping;
     }
 };
 
