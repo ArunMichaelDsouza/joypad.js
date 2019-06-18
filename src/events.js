@@ -38,6 +38,7 @@ const initEventListeners = () => {
 };
 const listenToButtonEvents = gamepad => {
     gamepad.buttons.forEach((button, index) => {
+        const buttonMapping = joypad.settings.customButtonMapping;
         const keys = findButtonMapping(index, BUTTON_MAPPING);
         const { buttonEvents } = joypad;
 
