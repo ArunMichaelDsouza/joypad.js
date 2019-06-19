@@ -98,6 +98,8 @@ joypad.set({
 });
 ```
 
+> Note: To make sure that your applied settings have the desired effect, please use this method before initialising your event listeners.
+
 View all of the available settings [here](#user-content-settings).
 
 ### ``joypad.settings {object}``
