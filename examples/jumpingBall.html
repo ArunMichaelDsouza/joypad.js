@@ -76,8 +76,22 @@
             ball.style.transform = 'translateY(-50px)';
         }
 
+        function setCustomButtonMapping() {
+            // If browser is firefox
+            if (window.navigator.userAgent.includes('Firefox')) {
+                return {
+                    button_0: 1
+                }
+            } else {
+                return null;
+            }
+        }
+
         resetInfo();
-        joypad.set({ axisMovementThreshold: 0.3 });
+        joypad.set({
+            axisMovementThreshold: 0.3,
+            customButtonMapping: setCustomButtonMapping()
+        });
         joypad.on('connect', e => updateInfo(e));
         joypad.on('disconnect', e => resetInfo(e));
         joypad.on('button_press', e => {
