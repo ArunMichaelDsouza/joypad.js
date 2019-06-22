@@ -179,7 +179,7 @@ The following image and table describes the default button mappings as on ``Chro
 | button_16 | Vendor button 1                |
 | button_17 | Vendor button 2                |
 
-If you would like to set cutom button mappings for better cross browser support, you can use the ``customButtonMapping`` setting.
+If you would like to set custom button mappings for better cross browser support, you can use the [customButtonMapping](https://github.com/ArunMichaelDsouza/joypad.js#custombuttonmapping-object) setting.
 
 ### ``axis_move``
 
