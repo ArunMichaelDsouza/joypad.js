@@ -12,7 +12,7 @@ Working examples can be found in the ``examples`` folder in the repo -
 
 [connection.html](https://github.com/ArunMichaelDsouza/joypad.js/blob/master/examples/connection.html) - Gamepad connection example.
 
-[jumpingBall.html](https://github.com/ArunMichaelDsouza/joypad.js/blob/master/examples/jumpingBall.html) - Button press example.
+[jumpingBall.html](https://github.com/ArunMichaelDsouza/joypad.js/blob/master/examples/jumpingBall.html) - Button press example (with custom button mapping).
 
 [movingBall.html](https://github.com/ArunMichaelDsouza/joypad.js/blob/master/examples/movingBall.html) - Axis (analog stick) movement example.
 
@@ -179,6 +179,8 @@ The following image and table describes the default button mappings as on ``Chro
 | button_16 | Vendor button 1                |
 | button_17 | Vendor button 2                |
 
+If you would like to set cutom button mappings for better cross browser support, you can use the ``customButtonMapping`` setting.
+
 ### ``axis_move``
 
 Fired whenever a controller's axis (analog stick) is moved.
@@ -240,6 +242,26 @@ To test the calibration of the analong sticks you can check out [html5gamepad.co
 ```javascript
 joypad.set({
     axisMovementThreshold: 0.3
+});
+```
+
+### ``customButtonMapping {object}``
+
+Used to set custom button mapping for better cross browser button mappings support.
+
+```javascript
+function setCustomButtonMapping() {
+    if (browserIs('Firefox')) {
+        return {
+            button_0: 1
+        }
+    } else {
+        return null;
+    }
+};
+
+joypad.set({
+    customButtonMapping: setCustomButtonMapping()
 });
 ```
 
