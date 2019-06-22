@@ -253,7 +253,9 @@ Used to set custom button mapping for better cross browser button mappings suppo
 function setCustomButtonMapping() {
     if (browserIs('Firefox')) {
         return {
-            button_0: 1
+            button_0: 1,
+            button_7: 11,
+            button_8: 12
         }
     } else {
         return null;
