@@ -150,7 +150,7 @@ Fired whenever a controller is disconnected.
 
 Fired whenever a controller's button is pressed.
 
-joypad.js supports the ``standard`` gamepad button layout which is supported by most controllers in which button locations are layed out in a left cluster of four buttons, a right cluster of four buttons , a center cluster of three buttons (some controllers have four) and a pair of front facing buttons (shoulder buttons) on the left and right side of the gamepad. 
+joypad.js supports the ``standard`` gamepad button layout which is supported by most controllers in which button locations are laid out in a left cluster of four buttons, a right cluster of four buttons , a center cluster of three buttons (some controllers have four) and a pair of front facing buttons (shoulder buttons) on the left and right side of the gamepad. 
 
 > Note: Since the Gamepad API is in very early stages, the standard gamepad button layout may differ from browser to browser.
 
