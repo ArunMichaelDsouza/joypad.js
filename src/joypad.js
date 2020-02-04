@@ -20,16 +20,12 @@ const joypad = {
         switch (event) {
             case EVENTS.CONNECT.ALIAS:
                 return emitter.subscribe(EVENTS.CONNECT.ALIAS, callback);
-                break;
             case EVENTS.DISCONNECT.ALIAS:
                 return emitter.subscribe(EVENTS.DISCONNECT.ALIAS, callback);
-                break;
             case EVENTS.BUTTON_PRESS.ALIAS:
                 return emitter.subscribe(EVENTS.BUTTON_PRESS.ALIAS, callback);
-                break;
             case EVENTS.AXIS_MOVEMENT.ALIAS:
                 return emitter.subscribe(EVENTS.AXIS_MOVEMENT.ALIAS, callback);
-                break;
         }
     },
     vibrate: function (gamepadInstance, options) {
