@@ -19,16 +19,16 @@ const joypad = {
     on: function (event, callback) {
         switch (event) {
             case EVENTS.CONNECT.ALIAS:
-                emitter.subscribe(EVENTS.CONNECT.ALIAS, callback);
+                return emitter.subscribe(EVENTS.CONNECT.ALIAS, callback);
                 break;
             case EVENTS.DISCONNECT.ALIAS:
-                emitter.subscribe(EVENTS.DISCONNECT.ALIAS, callback);
+                return emitter.subscribe(EVENTS.DISCONNECT.ALIAS, callback);
                 break;
             case EVENTS.BUTTON_PRESS.ALIAS:
-                emitter.subscribe(EVENTS.BUTTON_PRESS.ALIAS, callback);
+                return emitter.subscribe(EVENTS.BUTTON_PRESS.ALIAS, callback);
                 break;
             case EVENTS.AXIS_MOVEMENT.ALIAS:
-                emitter.subscribe(EVENTS.AXIS_MOVEMENT.ALIAS, callback);
+                return emitter.subscribe(EVENTS.AXIS_MOVEMENT.ALIAS, callback);
                 break;
         }
     },
