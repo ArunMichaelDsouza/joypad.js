@@ -86,6 +86,16 @@ joypad.on('button_press', e => {
 });
 ```
 
+This returns a reference to the unsubscribe method which can be used to unsubscribe from the specified event.
+
+```javascript
+const buttonPressEvent = joypad.on('button_press', e => { ... });
+
+const gameOver = () => {
+    buttonPressEvent.unsubscribe();
+};
+```
+
 View all of the supported events [here](#user-content-events).
 
 ### ``joypad.set({settings}) {method}``
