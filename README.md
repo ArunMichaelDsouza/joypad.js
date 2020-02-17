@@ -297,6 +297,13 @@ npm test
 
 <br/>
 
+## Contributors
+
+| [<img src="https://avatars3.githubusercontent.com/u/4924614" width="100px;"/><br /><sub><b>Arun Michael Dsouza</b></sub>](https://github.com/ArunMichaelDsouza)<br />| [<img src="https://avatars3.githubusercontent.com/u/1321971" width="100px;"/><br /><sub><b>Antoine Bluchet</b></sub>](https://github.com/soyuka)<br />|
+| :---: | :---: |
+
+<br/>
+
 ## Support
 
 If you'd like to help support the development of the project, please consider backing me on Patreon -
