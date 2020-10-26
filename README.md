@@ -144,6 +144,18 @@ To know about all the options supported by the vibrate method click [here](#user
 
 > Note: Since the Gamepad API is in very early stages, the vibrate method might not work on most browsers.
 
+### ``joypad.trigger(event, data) {method}``
+
+Emulates an event.
+
+```javascript
+joypad.trigger('button_press', {
+    detail: {
+        buttonName: 'button_0'
+    }
+});
+```
+
 <br/>
 
 ## Events

@@ -49,6 +49,9 @@ const joypad = {
         }
         this.settings.vibration = vibration;
         this.settings.customButtonMapping = customButtonMapping;
+    },
+    trigger: function (event, data) {
+        return emitter.publish(event, data);
     }
 };
 

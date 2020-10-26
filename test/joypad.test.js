@@ -2,6 +2,7 @@
 
 import { AXIS_MOVEMENT_THRESHOLD } from '../src/constants';
 import joypad from '../src/joypad';
+import emitter from '../src/emitter';
 
 describe("joypad", () => {
     let changedAxisMovementThreshold;
@@ -21,5 +22,12 @@ describe("joypad", () => {
 
         joypad.remove(0);
         expect(joypad.instances).toEqual({});
+    });
+
+    describe("trigger", () => {
+        const mockPublish = jest.spyOn(emitter, "publish").mockImplementation();
+        joypad.trigger("a", "b");
+        expect(mockPublish).toHaveBeenCalledTimes(1);
+        expect(mockPublish).toHaveBeenCalledWith("a", "b");
     });
 });
