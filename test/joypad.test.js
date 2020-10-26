@@ -24,10 +24,11 @@ describe("joypad", () => {
         expect(joypad.instances).toEqual({});
     });
 
-    describe("trigger", () => {
-        const mockPublish = jest.spyOn(emitter, "publish").mockImplementation();
-        joypad.trigger("a", "b");
+    describe('trigger', () => {
+        const mockPublish = jest.spyOn(emitter, 'publish').mockImplementation();
+        joypad.trigger('a', 'b');
+
         expect(mockPublish).toHaveBeenCalledTimes(1);
-        expect(mockPublish).toHaveBeenCalledWith("a", "b");
+        expect(mockPublish).toHaveBeenCalledWith('a', 'b');
     });
 });
