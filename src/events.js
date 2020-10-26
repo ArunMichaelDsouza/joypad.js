@@ -1,4 +1,4 @@
-// Joypad events
+// Joypad events handler
 
 import emitter from './emitter';
 import joypad from './joypad';

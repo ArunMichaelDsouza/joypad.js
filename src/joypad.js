@@ -1,4 +1,4 @@
-// Joypad instance
+// Joypad library
 
 import emitter from './emitter';
 import { EVENTS, AXIS_MOVEMENT_THRESHOLD } from './constants';
