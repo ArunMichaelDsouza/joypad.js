@@ -146,7 +146,7 @@ To know about all the options supported by the vibrate method click [here](#user
 
 ### ``joypad.trigger(event, data) {method}``
 
-Emulates an event.
+Emulates an event with the provided data.
 
 ```javascript
 joypad.trigger('button_press', {
@@ -311,8 +311,8 @@ npm test
 
 ## Contributors
 
-| [<img src="https://avatars3.githubusercontent.com/u/4924614" width="100px;"/><br /><sub><b>Arun Michael Dsouza</b></sub>](https://github.com/ArunMichaelDsouza)<br />| [<img src="https://avatars3.githubusercontent.com/u/1321971" width="100px;"/><br /><sub><b>Antoine Bluchet</b></sub>](https://github.com/soyuka)<br />|
-| :---: | :---: |
+| [<img src="https://avatars3.githubusercontent.com/u/4924614" width="100px;"/><br /><sub><b>Arun Michael Dsouza</b></sub>](https://github.com/ArunMichaelDsouza)<br />| [<img src="https://avatars3.githubusercontent.com/u/1321971" width="100px;"/><br /><sub><b>Antoine Bluchet</b></sub>](https://github.com/soyuka)<br />| [<img src="https://avatars1.githubusercontent.com/u/199635?s=400&v=4" width="100px;"/><br /><sub><b>Bart Nagel</b></sub>](https://github.com/tremby)<br />|
+| :---: | :---: | :---: |
 
 <br/>
 
