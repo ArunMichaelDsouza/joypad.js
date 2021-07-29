@@ -129,5 +129,4 @@ const handleButtonEvent = (buttonName, buttonEvents) => {
     }
 };
 
-initEventListeners();
-export { listenToButtonEvents, listenToAxisMovements, handleButtonEvent }
+export { listenToButtonEvents, listenToAxisMovements, handleButtonEvent, initEventListeners }

@@ -3,8 +3,10 @@
 import emitter from './emitter';
 import { EVENTS, AXIS_MOVEMENT_THRESHOLD } from './constants';
 import { log, hasVibrationSupport } from './helpers';
+import { initEventListeners } from './events';
 
 const joypad = {
+    [Symbol()]: initEventListeners(),
     loopStarted: false,
     instances: {},
     buttonEvents: {
