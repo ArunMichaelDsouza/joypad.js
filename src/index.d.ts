@@ -78,3 +78,4 @@ export type Joypad = {
 
 declare const joypad: Joypad
 export default joypad
+export function hasGamepadApiSupport(): boolean
