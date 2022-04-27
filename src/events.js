@@ -32,6 +32,9 @@ const initEventListeners = () => {
     window.addEventListener(EVENTS.BUTTON_PRESS.ALIAS, e => {
         return emitter.publish(EVENTS.BUTTON_PRESS.ALIAS, e);
     });
+    window.addEventListener(EVENTS.BUTTON_RELEASE.ALIAS, e => {
+        return emitter.publish(EVENTS.BUTTON_RELEASE.ALIAS, e);
+    });
     window.addEventListener(EVENTS.AXIS_MOVEMENT.ALIAS, e => {
         return emitter.publish(EVENTS.AXIS_MOVEMENT.ALIAS, e);
     });
@@ -118,13 +121,27 @@ const handleButtonEvent = (buttonName, buttonEvents) => {
         // Reset button usage flags
         buttonEvents[buttonName].pressed = false;
         buttonEvents[buttonName].hold = true;
+
+        buttonEvents[buttonName].last_event = EVENTS.BUTTON_PRESS.ALIAS;
     }
 
     // Button being held
     else if (buttonEvents[buttonName].hold) { }
 
     // Button being released
-    else if (buttonEvents[buttonName].released) {
+    else if (buttonEvents[buttonName].released && buttonEvents[buttonName].last_event === EVENTS.BUTTON_PRESS.ALIAS) {
+
+        const buttonPressEvent = eventData => new CustomEvent(EVENTS.BUTTON_RELEASE.ALIAS, { detail: eventData });
+        const { index, gamepad } = buttonEvents[buttonName];
+        const eventData = {
+            buttonName,
+            button: buttonEvents[buttonName].button,
+            index,
+            gamepad
+        };
+        window.dispatchEvent(buttonPressEvent(eventData));
+
+        // Event lifecycle complete
         delete buttonEvents[buttonName];
     }
 };

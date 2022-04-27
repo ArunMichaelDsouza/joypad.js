@@ -13,6 +13,10 @@ const EVENTS = {
         NATIVE: null,
         ALIAS: 'button_press'
     },
+    BUTTON_RELEASE: {
+        NATIVE: null,
+        ALIAS: 'button_release'
+    },
     AXIS_MOVEMENT: {
         NATIVE: null,
         ALIAS: 'axis_move'

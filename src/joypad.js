@@ -24,6 +24,8 @@ const joypad = {
                 return emitter.subscribe(EVENTS.DISCONNECT.ALIAS, callback);
             case EVENTS.BUTTON_PRESS.ALIAS:
                 return emitter.subscribe(EVENTS.BUTTON_PRESS.ALIAS, callback);
+            case EVENTS.BUTTON_RELEASE.ALIAS:
+                return emitter.subscribe(EVENTS.BUTTON_RELEASE.ALIAS, callback);
             case EVENTS.AXIS_MOVEMENT.ALIAS:
                 return emitter.subscribe(EVENTS.AXIS_MOVEMENT.ALIAS, callback);
         }
