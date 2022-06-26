@@ -305,10 +305,20 @@ joypad.set({
 
 ## Testing
 
-joypad.js uses the [jest](https://facebook.github.io/jest/) test runner. Run the following command to initiate it - 
+joypad.js uses the [Jest](https://facebook.github.io/jest/) test runner. Run the following command to initiate it - 
 
 ```bash
 npm test
+```
+
+<br/>
+
+## Building
+
+joypad.js uses [SWC](https://swc.rs/) for its compilation and bundling. Run the following command to build the library - 
+
+```bash
+npm run build
 ```
 
 <br/>

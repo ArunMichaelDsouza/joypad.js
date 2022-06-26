@@ -105,43 +105,37 @@ const listenToAxisMovements = gamepad => {
         }
     });
 };
+const dispatchCustomEvent = (eventName, buttonEvents, buttonName) => {
+    const joypadEvent = eventData => new CustomEvent(eventName, { detail: eventData });
+    const { index, gamepad } = buttonEvents[buttonName];
+    const eventData = {
+        buttonName,
+        button: buttonEvents[buttonName].button,
+        index,
+        gamepad
+    };
+    
+    window.dispatchEvent(joypadEvent(eventData));
+};
 const handleButtonEvent = (buttonName, buttonEvents) => {
     // Fire button press event
     if (buttonEvents[buttonName].pressed) {
-        const buttonPressEvent = eventData => new CustomEvent(EVENTS.BUTTON_PRESS.ALIAS, { detail: eventData });
-        const { index, gamepad } = buttonEvents[buttonName];
-        const eventData = {
-            buttonName,
-            button: buttonEvents[buttonName].button,
-            index,
-            gamepad
-        };
-        window.dispatchEvent(buttonPressEvent(eventData));
+        dispatchCustomEvent(EVENTS.BUTTON_PRESS.ALIAS, buttonEvents, buttonName);
 
         // Reset button usage flags
         buttonEvents[buttonName].pressed = false;
         buttonEvents[buttonName].hold = true;
-
+        // Set last button press to fire button release event
         buttonEvents[buttonName].last_event = EVENTS.BUTTON_PRESS.ALIAS;
     }
 
     // Button being held
-    else if (buttonEvents[buttonName].hold) { }
+    else if (buttonEvents[buttonName].hold) {}
 
     // Button being released
     else if (buttonEvents[buttonName].released && buttonEvents[buttonName].last_event === EVENTS.BUTTON_PRESS.ALIAS) {
+        dispatchCustomEvent(EVENTS.BUTTON_RELEASE.ALIAS, buttonEvents, buttonName);
 
-        const buttonPressEvent = eventData => new CustomEvent(EVENTS.BUTTON_RELEASE.ALIAS, { detail: eventData });
-        const { index, gamepad } = buttonEvents[buttonName];
-        const eventData = {
-            buttonName,
-            button: buttonEvents[buttonName].button,
-            index,
-            gamepad
-        };
-        window.dispatchEvent(buttonPressEvent(eventData));
-
-        // Event lifecycle complete
         delete buttonEvents[buttonName];
     }
 };
