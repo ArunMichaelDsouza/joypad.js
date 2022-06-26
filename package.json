@@ -4,9 +4,7 @@
   "description": "A JavaScript library that lets you connect various gaming controllers to your browser using the Gamepad API.",
   "main": "./dist/joypad.min.js",
   "scripts": {
-    "build": "node_modules/.bin/webpack --output-filename joypad.min.js --mode production --progress",
-    "watch": "node_modules/.bin/webpack --output-filename joypad.js --mode development --progress --watch",
-    "start": "npm run build && npm run watch",
+    "build": "./node_modules/.bin/spack",
     "test": "./node_modules/.bin/jest"
   },
   "jest": {
@@ -35,8 +33,8 @@
   "homepage": "https://github.com/ArunMichaelDsouza/joypad.js#readme",
   "devDependencies": {
     "@babel/preset-env": "^7.4.5",
-    "jest": "^24.8.0",
-    "webpack": "^4.10.2",
-    "webpack-command": "^0.2.0"
+    "@swc/cli": "^0.1.57",
+    "@swc/core": "^1.2.205",
+    "jest": "^24.8.0"
   }
 }
