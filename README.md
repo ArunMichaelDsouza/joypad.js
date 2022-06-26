@@ -325,8 +325,8 @@ npm run build
 
 ## Contributors
 
-| [<img src="https://avatars3.githubusercontent.com/u/4924614" width="100px;"/><br /><sub><b>Arun Michael Dsouza</b></sub>](https://github.com/ArunMichaelDsouza)<br />| [<img src="https://avatars3.githubusercontent.com/u/1321971" width="100px;"/><br /><sub><b>Antoine Bluchet</b></sub>](https://github.com/soyuka)<br />| [<img src="https://avatars1.githubusercontent.com/u/199635?s=400&v=4" width="100px;"/><br /><sub><b>Bart Nagel</b></sub>](https://github.com/tremby)<br />|
-| :---: | :---: | :---: |
+| [<img src="https://avatars3.githubusercontent.com/u/4924614" width="100px;"/><br /><sub><b>Arun Michael Dsouza</b></sub>](https://github.com/ArunMichaelDsouza)<br />| [<img src="https://avatars3.githubusercontent.com/u/1321971" width="100px;"/><br /><sub><b>Antoine Bluchet</b></sub>](https://github.com/soyuka)<br />| [<img src="https://avatars1.githubusercontent.com/u/199635?s=400&v=4" width="100px;"/><br /><sub><b>Bart Nagel</b></sub>](https://github.com/tremby)<br />| [<img src="https://avatars.githubusercontent.com/u/34157010" width="100px;"/><br /><sub><b>Jamie Lee Preece</b></sub>](https://github.com/jamieleepreece)<br />|
+| :---: | :---: | :---: | :---: |
 
 <br/>
 
