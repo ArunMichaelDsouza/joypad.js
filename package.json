@@ -3,6 +3,9 @@
   "version": "2.3.2",
   "description": "A JavaScript library that lets you connect various gaming controllers to your browser using the Gamepad API.",
   "main": "./dist/joypad.min.js",
+  "module": "./src/index.mjs",
+  "browser": "./dist/joypad.min.js",
+  "types": "./src/index.d.ts",
   "scripts": {
     "build": "./node_modules/.bin/spack",
     "test": "./node_modules/.bin/jest"
